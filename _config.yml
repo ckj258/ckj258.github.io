@@ -1,12 +1,13 @@
-# Hexo Configuration
+﻿# Hexo Configuration
 ## Docs: https://hexo.io/docs/configuration.html
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle:
-description:
-author: John Doe
+title: Dantel的博客
+subtitle: 这个人很聪明，什么都没留下。
+description: 正念、专注···
+author: Dantel Chen
+email: 122358085@qq.com
 language:
 timezone:
 
@@ -63,7 +64,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: Yilia
+theme: yilia
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
