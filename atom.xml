@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Dantel的博客</title>
-  <subtitle>这个人很聪明，什么都没留下。</subtitle>
+  <subtitle>我们杜撰了无数个黄昏。</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-12-07T03:57:17.815Z</updated>
+  <updated>2016-12-13T09:50:25.688Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,51 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>pomelo服务器与cocos2d交互</title>
+    <link href="http://yoursite.com/2016/12/13/pomelo-libpomelo/"/>
+    <id>http://yoursite.com/2016/12/13/pomelo-libpomelo/</id>
+    <published>2016-12-13T06:30:00.000Z</published>
+    <updated>2016-12-13T09:50:25.688Z</updated>
+    
+    <content type="html"><![CDATA[<p>github : <a href="https://github.com/ckj258/PomeloClient/" target="_blank" rel="external">https://github.com/ckj258/PomeloClient/</a></p>
+<p>Pomelo 是基于 Node.js 的高性能、分布式游戏服务器框架。<br>非常适合用来开发轻量级手游客户端。<br>之前一直在用pomelo-cocos2dx架构，在此记录一下使用心得。  </p>
+<p>##运行项目</p>
+<h3 id="Client"><a href="#Client" class="headerlink" title="Client"></a>Client</h3><p>coco2dx引擎版本3.10，拷贝引擎文件至根目录编译，运行  </p>
+<h3 id="Server"><a href="#Server" class="headerlink" title="Server"></a>Server</h3><p>cd game-server<br><br>npm install<br><br>pomelo start<br></p>
+<a id="more"></a>
+<p>##类详解</p>
+<p>###PomeloSocket<br>负责与server的交互<br>主要方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">	void conConnect(const char*ServerIP, int ServerPort	);//建立连接</div><div class="line">	void quit();										  //断开连接</div><div class="line"></div><div class="line">/* ==============================================================================</div><div class="line"> * 功能描述：发送事件,回调函数 typedef void (*pc_notify_cb_t)(const pc_notify_t* req, int rc);  rc表示错误码,无参数返回. 例用于上传游戏数据等等</div><div class="line"> * 创 建 者：ckj</div><div class="line"> * 创建日期：2016年12月13日17:30:49</div><div class="line"> * ==============================================================================*/</div><div class="line">	void sendEvents(const char* params, const char*remote, pc_notify_cb_t event_cb);</div><div class="line">/* ==============================================================================</div><div class="line"> * 功能描述：发送请求,回调函数 typedef void (*pc_request_cb_t)(const pc_request_t* req, int rc, const char* resp);  rc表示错误码,resp为服务器json结构. 例用于登录等需要返回结果的场景  </div><div class="line"> * 创 建 者：ckj</div><div class="line"> * 创建日期：2016年12月13日17:33:53</div><div class="line"> * ==============================================================================*/</div><div class="line">	void sendRequest(const char* params, const char*remote, pc_request_cb_t request_cb);</div></pre></td></tr></table></figure></p>
+<p>###PomeloHandler<br>观察者模式中的观察者，负责向游戏中注册监听的对象发放广播<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">void addHandlerListen(PomeloListen* listen);//添加监听listen</div></pre></td></tr></table></figure></p>
+<h3 id="PomeloListen"><a href="#PomeloListen" class="headerlink" title="PomeloListen"></a>PomeloListen</h3><p>观察者模式中的对象，一个纯虚类，负责接收消息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">virtual void handle_event(const char* msgId, const char* msgBody)=0;  //msgId为服务器notify分发的remote</div></pre></td></tr></table></figure></p>
+<p>##调用方法<br>因为pomelo基于分布式游戏服务器框架，所以进入游戏时最好通过http请求获取TCP连接ip和port<br>然后调用onConnect建立连接</p>
+<p>游戏中将需要注册监听的对象继承PomeloListen，重写handle_event()方法即可<br>具体示例见ChatDialog.hpp ChatDialog.cpp</p>
+<p>##效果截图<br><img src="/assets/image/pomelo_screenshot1.png" alt=""><br><img src="/assets/image/pomelo_screenshot2.png" alt="">  </p>
+<p>界面粗糙，请勿见怪</p>
+<p>##platform</p>
+<p>android和mac自行链接对应库文件<br>END.<br>2016年12月13日17:48:50 Dantel Chen.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;github : &lt;a href=&quot;https://github.com/ckj258/PomeloClient/&quot;&gt;https://github.com/ckj258/PomeloClient/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Pomelo 是基于 Node.js 的高性能、分布式游戏服务器框架。&lt;br&gt;非常适合用来开发轻量级手游客户端。&lt;br&gt;之前一直在用pomelo-cocos2dx架构，在此记录一下使用心得。  &lt;/p&gt;
+&lt;p&gt;##运行项目&lt;/p&gt;
+&lt;h3 id=&quot;Client&quot;&gt;&lt;a href=&quot;#Client&quot; class=&quot;headerlink&quot; title=&quot;Client&quot;&gt;&lt;/a&gt;Client&lt;/h3&gt;&lt;p&gt;coco2dx引擎版本3.10，拷贝引擎文件至根目录编译，运行  &lt;/p&gt;
+&lt;h3 id=&quot;Server&quot;&gt;&lt;a href=&quot;#Server&quot; class=&quot;headerlink&quot; title=&quot;Server&quot;&gt;&lt;/a&gt;Server&lt;/h3&gt;&lt;p&gt;cd game-server&lt;/br&gt;&lt;br&gt;npm install&lt;/br&gt;&lt;br&gt;pomelo start&lt;/br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="pomelo" scheme="http://yoursite.com/tags/pomelo/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Hello World</title>
     <link href="http://yoursite.com/2016/12/07/hello-world/"/>
     <id>http://yoursite.com/2016/12/07/hello-world/</id>
     <published>2016-12-07T03:54:00.000Z</published>
-    <updated>2016-12-07T03:57:17.815Z</updated>
+    <updated>2016-12-08T08:57:42.279Z</updated>
     
     <content type="html"><![CDATA[<p>前前后后折腾了一天，因为网速的关系，反反复复的安装，人生第一篇博客终于诞生。<br>在此感谢 ”沸沸腾“ 提供的教程<a href="http://www.jianshu.com/p/863f3f2d1733" target="_blank" rel="external">http://www.jianshu.com/p/863f3f2d1733</a><br>以及 yilia作者“litten”提供的简约主题</p>
 ]]></content>

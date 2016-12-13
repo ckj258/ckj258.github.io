@@ -4,8 +4,25 @@
 
     
   <url>
+    <loc>http://yoursite.com/2016/12/13/pomelo-libpomelo/</loc>
+    <lastmod>2016-12-13T09:50:25.688Z</lastmod>
+    <data>
+        <display>
+        <title>pomelo服务器与cocos2d交互</title>
+        <pubTime>2016-12-13T06:30:00.000Z</pubTime>
+        
+        <tag>pomelo</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2016/12/07/hello-world/</loc>
-    <lastmod>2016-12-07T03:57:17.815Z</lastmod>
+    <lastmod>2016-12-08T08:57:42.279Z</lastmod>
     <data>
         <display>
         <title>Hello World</title>
