@@ -14,13 +14,13 @@ Pomelo 是基于 Node.js 的高性能、分布式游戏服务器框架。
 之前一直在用pomelo-cocos2dx架构，在此记录一下使用心得。  
 
 
-##运行项目
+###运行项目
 
-### Client
+##** Client
 
 coco2dx引擎版本3.10，拷贝引擎文件至根目录编译，运行  
 
-### Server
+##** Server
 
 cd game-server</br>
 npm install</br>
@@ -28,9 +28,9 @@ pomelo start</br>
 
 
 <!-- more -->
-##类详解
+###类详解
 
-###PomeloSocket
+##**PomeloSocket
 负责与server的交互
 主要方法
 ```
@@ -52,32 +52,32 @@ pomelo start</br>
 ```
 
 
-###PomeloHandler
+##**PomeloHandler
 观察者模式中的观察者，负责向游戏中注册监听的对象发放广播
 ```
 	void addHandlerListen(PomeloListen* listen);//添加监听listen
 ```
-### PomeloListen
+##**PomeloListen
 观察者模式中的对象，一个纯虚类，负责接收消息
 ```
 	virtual void handle_event(const char* msgId, const char* msgBody)=0;  //msgId为服务器notify分发的remote
 ```
 
-##调用方法
+###调用方法
 因为pomelo基于分布式游戏服务器框架，所以进入游戏时最好通过http请求获取TCP连接ip和port
 然后调用onConnect建立连接
 
 游戏中将需要注册监听的对象继承PomeloListen，重写handle_event()方法即可  
 具体示例见ChatDialog.hpp ChatDialog.cpp
 
-##效果截图
+###效果截图
 ![](/assets/image/pomelo_screenshot1.png)  
 ![](/assets/image/pomelo_screenshot2.png)  
 
 
 界面粗糙，请勿见怪
 
-##platform
+###platform
 
 android和mac自行链接对应库文件
 END.     
