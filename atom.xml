@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-12-13T09:50:25.688Z</updated>
+  <updated>2016-12-14T01:57:03.830Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,33 +20,27 @@
     <link href="http://yoursite.com/2016/12/13/pomelo-libpomelo/"/>
     <id>http://yoursite.com/2016/12/13/pomelo-libpomelo/</id>
     <published>2016-12-13T06:30:00.000Z</published>
-    <updated>2016-12-13T09:50:25.688Z</updated>
+    <updated>2016-12-14T01:57:03.830Z</updated>
     
     <content type="html"><![CDATA[<p>github : <a href="https://github.com/ckj258/PomeloClient/" target="_blank" rel="external">https://github.com/ckj258/PomeloClient/</a></p>
 <p>Pomelo 是基于 Node.js 的高性能、分布式游戏服务器框架。<br>非常适合用来开发轻量级手游客户端。<br>之前一直在用pomelo-cocos2dx架构，在此记录一下使用心得。  </p>
-<p>##运行项目</p>
-<h3 id="Client"><a href="#Client" class="headerlink" title="Client"></a>Client</h3><p>coco2dx引擎版本3.10，拷贝引擎文件至根目录编译，运行  </p>
-<h3 id="Server"><a href="#Server" class="headerlink" title="Server"></a>Server</h3><p>cd game-server<br><br>npm install<br><br>pomelo start<br></p>
 <a id="more"></a>
-<p>##类详解</p>
-<p>###PomeloSocket<br>负责与server的交互<br>主要方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">	void conConnect(const char*ServerIP, int ServerPort	);//建立连接</div><div class="line">	void quit();										  //断开连接</div><div class="line"></div><div class="line">/* ==============================================================================</div><div class="line"> * 功能描述：发送事件,回调函数 typedef void (*pc_notify_cb_t)(const pc_notify_t* req, int rc);  rc表示错误码,无参数返回. 例用于上传游戏数据等等</div><div class="line"> * 创 建 者：ckj</div><div class="line"> * 创建日期：2016年12月13日17:30:49</div><div class="line"> * ==============================================================================*/</div><div class="line">	void sendEvents(const char* params, const char*remote, pc_notify_cb_t event_cb);</div><div class="line">/* ==============================================================================</div><div class="line"> * 功能描述：发送请求,回调函数 typedef void (*pc_request_cb_t)(const pc_request_t* req, int rc, const char* resp);  rc表示错误码,resp为服务器json结构. 例用于登录等需要返回结果的场景  </div><div class="line"> * 创 建 者：ckj</div><div class="line"> * 创建日期：2016年12月13日17:33:53</div><div class="line"> * ==============================================================================*/</div><div class="line">	void sendRequest(const char* params, const char*remote, pc_request_cb_t request_cb);</div></pre></td></tr></table></figure></p>
-<p>###PomeloHandler<br>观察者模式中的观察者，负责向游戏中注册监听的对象发放广播<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">void addHandlerListen(PomeloListen* listen);//添加监听listen</div></pre></td></tr></table></figure></p>
+<h2 id="运行项目"><a href="#运行项目" class="headerlink" title="运行项目"></a>运行项目</h2><h3 id="Client"><a href="#Client" class="headerlink" title="Client"></a>Client</h3><p>coco2dx引擎版本3.10，拷贝引擎文件至根目录编译，运行  </p>
+<h3 id="Server"><a href="#Server" class="headerlink" title="Server"></a>Server</h3><p>cd game-server<br><br>npm install<br><br>pomelo start<br></p>
+<h2 id="类详解"><a href="#类详解" class="headerlink" title="类详解"></a>类详解</h2><h3 id="PomeloSocket"><a href="#PomeloSocket" class="headerlink" title="PomeloSocket"></a>PomeloSocket</h3><p>负责与server的交互<br>主要方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">	void conConnect(const char*ServerIP, int ServerPort	);//建立连接</div><div class="line">	void quit();										  //断开连接</div><div class="line"></div><div class="line">/* ==============================================================================</div><div class="line"> * 功能描述：发送事件,回调函数 typedef void (*pc_notify_cb_t)(const pc_notify_t* req, int rc);  rc表示错误码,无参数返回. 例用于上传游戏数据等等</div><div class="line"> * 创 建 者：ckj</div><div class="line"> * 创建日期：2016年12月13日17:30:49</div><div class="line"> * ==============================================================================*/</div><div class="line">	void sendEvents(const char* params, const char*remote, pc_notify_cb_t event_cb);</div><div class="line">/* ==============================================================================</div><div class="line"> * 功能描述：发送请求,回调函数 typedef void (*pc_request_cb_t)(const pc_request_t* req, int rc, const char* resp);  rc表示错误码,resp为服务器json结构. 例用于登录等需要返回结果的场景  </div><div class="line"> * 创 建 者：ckj</div><div class="line"> * 创建日期：2016年12月13日17:33:53</div><div class="line"> * ==============================================================================*/</div><div class="line">	void sendRequest(const char* params, const char*remote, pc_request_cb_t request_cb);</div></pre></td></tr></table></figure></p>
+<h3 id="PomeloHandler"><a href="#PomeloHandler" class="headerlink" title="PomeloHandler"></a>PomeloHandler</h3><p>观察者模式中的观察者，负责向游戏中注册监听的对象发放广播<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">void addHandlerListen(PomeloListen* listen);//添加监听listen</div></pre></td></tr></table></figure></p>
 <h3 id="PomeloListen"><a href="#PomeloListen" class="headerlink" title="PomeloListen"></a>PomeloListen</h3><p>观察者模式中的对象，一个纯虚类，负责接收消息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">virtual void handle_event(const char* msgId, const char* msgBody)=0;  //msgId为服务器notify分发的remote</div></pre></td></tr></table></figure></p>
-<p>##调用方法<br>因为pomelo基于分布式游戏服务器框架，所以进入游戏时最好通过http请求获取TCP连接ip和port<br>然后调用onConnect建立连接</p>
+<h2 id="调用方法"><a href="#调用方法" class="headerlink" title="调用方法"></a>调用方法</h2><p>因为pomelo基于分布式游戏服务器框架，所以进入游戏时最好通过http请求获取TCP连接ip和port<br>然后调用onConnect建立连接</p>
 <p>游戏中将需要注册监听的对象继承PomeloListen，重写handle_event()方法即可<br>具体示例见ChatDialog.hpp ChatDialog.cpp</p>
-<p>##效果截图<br><img src="/assets/image/pomelo_screenshot1.png" alt=""><br><img src="/assets/image/pomelo_screenshot2.png" alt="">  </p>
+<h2 id="效果截图"><a href="#效果截图" class="headerlink" title="效果截图"></a>效果截图</h2><p><img src="/assets/image/pomelo_screenshot1.png" alt=""><br><img src="/assets/image/pomelo_screenshot2.png" alt="">  </p>
 <p>界面粗糙，请勿见怪</p>
-<p>##platform</p>
-<p>android和mac自行链接对应库文件<br>END.<br>2016年12月13日17:48:50 Dantel Chen.</p>
+<h2 id="platform"><a href="#platform" class="headerlink" title="platform"></a>platform</h2><p>android和mac自行链接对应库文件</p>
 ]]></content>
     
     <summary type="html">
     
       &lt;p&gt;github : &lt;a href=&quot;https://github.com/ckj258/PomeloClient/&quot;&gt;https://github.com/ckj258/PomeloClient/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Pomelo 是基于 Node.js 的高性能、分布式游戏服务器框架。&lt;br&gt;非常适合用来开发轻量级手游客户端。&lt;br&gt;之前一直在用pomelo-cocos2dx架构，在此记录一下使用心得。  &lt;/p&gt;
-&lt;p&gt;##运行项目&lt;/p&gt;
-&lt;h3 id=&quot;Client&quot;&gt;&lt;a href=&quot;#Client&quot; class=&quot;headerlink&quot; title=&quot;Client&quot;&gt;&lt;/a&gt;Client&lt;/h3&gt;&lt;p&gt;coco2dx引擎版本3.10，拷贝引擎文件至根目录编译，运行  &lt;/p&gt;
-&lt;h3 id=&quot;Server&quot;&gt;&lt;a href=&quot;#Server&quot; class=&quot;headerlink&quot; title=&quot;Server&quot;&gt;&lt;/a&gt;Server&lt;/h3&gt;&lt;p&gt;cd game-server&lt;/br&gt;&lt;br&gt;npm install&lt;/br&gt;&lt;br&gt;pomelo start&lt;/br&gt;&lt;/p&gt;
     
     </summary>
     
@@ -73,48 +67,6 @@
     
     
       <category term="杂谈" scheme="http://yoursite.com/tags/%E6%9D%82%E8%B0%88/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>生产者-消费者模型的coffeescript实现</title>
-    <link href="http://yoursite.com/2012/12/24/coffee-pc/"/>
-    <id>http://yoursite.com/2012/12/24/coffee-pc/</id>
-    <published>2012-12-24T15:51:00.000Z</published>
-    <updated>2016-12-04T16:51:20.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>这两天一直在看coffeescript相关的东西，也帮一个朋友搞了个生产者-消费者模型的C语言实现。想到还没用coffeescript真正意义上写过程序，那就尝试做一下吧。</p>
-<p>其实<a href="http://read.douban.com/ebook/198648/" target="_blank" rel="external">《CoffeeScript小书》</a>是暑假实习时就买了，一直比较向往着函数式编程却拖延了很久没行动起来。小书只有几十页，本是github上一个开源的项目，我喜欢这种轻巧的文字。语法部分看下来，再看下类与继承，只花了半天的时间，而且心情非常愉悦，然后就可以开始我菜鸟的第一次试飞了。</p>
-<p>生产者-消费者模型没什么好说的了，就是读写共享缓冲区，pv操作控制是否冲突。更多的就是冲着coffeescript来的。下面是一些凌乱但自认为有思考价值的记录，或许后续我会继续写一些coffeescript的学习笔记，再做深入的研究。<br><a id="more"></a></p>
-<p>##<strong>demo，可尝试点击“生产”“消费”按钮</strong></p>
-<p><iframe src="/assets/demo/coffee_pc_demo/pro-con.html" width="780" height="336" scrolling="no"></iframe></p>
-<p>##<strong>litten如是想：</strong></p>
-<ul>
-<li>我一定要学一门，至少一门函数式风格编程语言，没有太深远的想法，就觉得它就是我的菜       </li>
-<li>这个程序是66行的coffeescript代码，最后编译后得到了122行的js代码，说明编程效率提升显著          </li>
-<li>括号，方括号，花括号，还有逗号有时候会多烦人，特别是使用过ExtJs的人，而coffeescript可以没有</li>
-<li>用法简洁的jquery在coffeescript里面会更简洁                   </li>
-<li>关于coffeescript的循环，它不推荐你使用for循环，而是使用“推导”，暴露在底层的循环只有while语法        </li>
-<li>事件绑定时，使用=&gt;可以免去js上下文切换this的麻烦               </li>
-<li>coffeescript的数组迭代方法非常的酷，三言两语说不清             </li>
-<li>javascript会是下一个JVM吗？              </li>
-<li>站在产品的角度，我认为coffeescript这名字太长了-_-!              </li>
-</ul>
-<p>##<strong>附上源码</strong><br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div></pre></td><td class="code"><pre><div class="line">N = <span class="number">10</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ProCon</span></span></div><div class="line">	data: </div><div class="line">		mutex:<span class="number">1</span></div><div class="line">		empty:N</div><div class="line">		full:<span class="number">0</span></div><div class="line">		front:<span class="number">0</span></div><div class="line">		rear:<span class="number">0</span></div><div class="line">		buf: []</div><div class="line">	init:<span class="function">-&gt;</span></div><div class="line">		i = <span class="number">0</span></div><div class="line">		<span class="keyword">while</span> i&lt;N</div><div class="line">			newDom = $(<span class="string">'&lt;div class="bufBox"&gt;&lt;div class="bufCover"&gt;'</span>+i+<span class="string">'&lt;/div&gt;'</span>+i+<span class="string">'&lt;/div&gt;'</span>)</div><div class="line">			$(<span class="string">'#buf'</span>).append(newDom)</div><div class="line">			@data.buf.push <span class="string">'e'</span></div><div class="line">			i++</div><div class="line">		$(<span class="string">'#produce'</span>).click =&gt;</div><div class="line">			@producer()</div><div class="line">		$(<span class="string">'#consume'</span>).click =&gt;</div><div class="line">			@consumer()</div><div class="line">	p:<span class="function"><span class="params">(num)</span>-&gt;</span></div><div class="line">		<span class="keyword">return</span> --num</div><div class="line">	v:<span class="function"><span class="params">(num)</span>-&gt;</span></div><div class="line">		<span class="keyword">return</span> ++num</div><div class="line">	produceItem:<span class="function">-&gt;</span></div><div class="line">		$(<span class="string">'&lt;p class="desPro"&gt;生产了产品&lt;/p&gt;'</span>).insertBefore $(<span class="string">"#des p:first"</span>)</div><div class="line">		<span class="keyword">return</span> <span class="string">'m'</span></div><div class="line">	consumeItem:<span class="function">-&gt;</span></div><div class="line">		$(<span class="string">'&lt;p class="desCon"&gt;消费了产品&lt;/p&gt;'</span>).insertBefore $(<span class="string">"#des p:first"</span>)</div><div class="line">	enterItem:<span class="function"><span class="params">(item)</span> -&gt;</span></div><div class="line">		@data.front = (@data.front+<span class="number">1</span>)%N</div><div class="line">		@data.buf[@data.front] = item;</div><div class="line">		str = <span class="string">"存入产品<span class="subst">#&#123;@data.buf[@data.front]&#125;</span>到缓冲区<span class="subst">#&#123;@data.front&#125;</span>"</span></div><div class="line">		$(<span class="string">"&lt;p class='desPro'&gt;<span class="subst">#&#123;str&#125;</span>&lt;/p&gt;"</span>).insertBefore $(<span class="string">"#des p:first"</span>)</div><div class="line">		$($(<span class="string">'.bufCover'</span>)[@data.front]).animate </div><div class="line">			<span class="string">"height"</span>:<span class="string">"50px"</span></div><div class="line">	removeItem:<span class="function">-&gt;</span></div><div class="line">		@data.rear = (@data.rear + <span class="number">1</span>) % N;</div><div class="line">		@data.buf[@data.rear] = <span class="string">'e'</span>;</div><div class="line">		str = <span class="string">"取出产品<span class="subst">#&#123;@data.buf[@data.rear]&#125;</span>从缓冲区<span class="subst">#&#123;@data.rear&#125;</span>"</span></div><div class="line">		$(<span class="string">"&lt;p class='desCon'&gt;<span class="subst">#&#123;str&#125;</span>&lt;/p&gt;"</span>).insertBefore $(<span class="string">"#des p:first"</span>)</div><div class="line">		$($(<span class="string">'.bufCover'</span>)[@data.rear]).animate </div><div class="line">			<span class="string">"height"</span>:<span class="string">"0px"</span></div><div class="line">	producer:<span class="function">-&gt;</span></div><div class="line">		<span class="keyword">if</span> @data.full==N</div><div class="line">			$(<span class="string">"&lt;p class='desSpe'&gt;缓冲区已全满&lt;/p&gt;"</span>).insertBefore $(<span class="string">"#des p:first"</span>)</div><div class="line">			<span class="keyword">return</span></div><div class="line">		item = @produceItem()</div><div class="line">		@data.empty = @p(@data.empty)</div><div class="line">		@data.mutex = @p(@data.mutex)</div><div class="line">		@enterItem(item)</div><div class="line">		@data.mutex = @v(@data.mutex)</div><div class="line">		@data.full = @v(@data.full)</div><div class="line">	consumer:<span class="function">-&gt;</span></div><div class="line">		<span class="keyword">if</span> @data.empty==N</div><div class="line">			$(<span class="string">"&lt;p class='desSpe'&gt;缓冲区已空&lt;/p&gt;"</span>).insertBefore $(<span class="string">"#des p:first"</span>)</div><div class="line">			<span class="keyword">return</span></div><div class="line">		@data.full = @p(@data.full)</div><div class="line">		@data.mutex = @p(@data.mutex)</div><div class="line">		@removeItem()</div><div class="line">		@data.mutex = @v(@data.mutex)</div><div class="line">		@data.empty = @v(@data.empty)</div><div class="line">		@consumeItem()</div><div class="line">		</div><div class="line">procon = <span class="keyword">new</span> ProCon</div><div class="line">procon.init();</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;这两天一直在看coffeescript相关的东西，也帮一个朋友搞了个生产者-消费者模型的C语言实现。想到还没用coffeescript真正意义上写过程序，那就尝试做一下吧。&lt;/p&gt;
-&lt;p&gt;其实&lt;a href=&quot;http://read.douban.com/ebook/198648/&quot;&gt;《CoffeeScript小书》&lt;/a&gt;是暑假实习时就买了，一直比较向往着函数式编程却拖延了很久没行动起来。小书只有几十页，本是github上一个开源的项目，我喜欢这种轻巧的文字。语法部分看下来，再看下类与继承，只花了半天的时间，而且心情非常愉悦，然后就可以开始我菜鸟的第一次试飞了。&lt;/p&gt;
-&lt;p&gt;生产者-消费者模型没什么好说的了，就是读写共享缓冲区，pv操作控制是否冲突。更多的就是冲着coffeescript来的。下面是一些凌乱但自认为有思考价值的记录，或许后续我会继续写一些coffeescript的学习笔记，再做深入的研究。&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="js" scheme="http://yoursite.com/tags/js/"/>
-    
-      <category term="coffeescript" scheme="http://yoursite.com/tags/coffeescript/"/>
     
   </entry>
   
