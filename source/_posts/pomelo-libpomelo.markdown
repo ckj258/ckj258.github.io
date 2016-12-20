@@ -10,7 +10,7 @@ tags:
 github : https://github.com/ckj258/PomeloClient/
 
 Pomelo 是基于 Node.js 的高性能、分布式游戏服务器框架。
-非常适合用来开发轻量级手游客户端。    
+非常适合用来开发轻量级手游。    
 之前一直在用pomelo-cocos2dx架构，在此记录一下使用心得。  
 
 <!-- more -->
