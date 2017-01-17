@@ -16,7 +16,7 @@
 <meta property="og:description" content="REmote DIctionary Server(Redis) 是一个由Salvatore Sanfilippo写的key-value存储系统。Redis是一个开源的使用ANSI C语言编写、遵守BSD协议、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。">
 <meta property="og:image" content="http://yoursite.com/assets/image/redis_running.png">
 <meta property="og:image" content="http://yoursite.com/assets/image/redis_running2.png">
-<meta property="og:updated_time" content="2017-01-17T02:48:13.739Z">
+<meta property="og:updated_time" content="2017-01-17T02:55:32.939Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="redis的安装与部署">
 <meta name="twitter:description" content="REmote DIctionary Server(Redis) 是一个由Salvatore Sanfilippo写的key-value存储系统。Redis是一个开源的使用ANSI C语言编写、遵守BSD协议、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。">
@@ -164,8 +164,8 @@
       
         <p>REmote DIctionary Server(Redis) 是一个由Salvatore Sanfilippo写的key-value存储系统。<br>Redis是一个开源的使用ANSI C语言编写、遵守BSD协议、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。   </p>
 <a id="more"></a>
-<h2 id="运行redis"><a href="#运行redis" class="headerlink" title="运行redis"></a>运行redis</h2><h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p>下载地址：<a href="https://github.com/MSOpenTech/redis/releases。" target="_blank" rel="external">https://github.com/MSOpenTech/redis/releases。</a><br>Redis 支持 32 位和 64 位。<br>这个需要根据你系统平台的实际情况选择，这里我们下载 Redis-x64-xxx.zip,解压后，将文件夹重新命名为 redis。        </p>
-<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>Redis 的配置文件位于 Redis 安装目录下，文件名为 redis.conf。<br>参数说明:<a href="https://github.com/MSOpenTech/redis/releases。" target="_blank" rel="external">https://github.com/MSOpenTech/redis/releases。</a>    </p>
+<h2 id="运行redis"><a href="#运行redis" class="headerlink" title="运行redis"></a>运行redis</h2><h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p>下载地址：<a href="https://redis.io/。" target="_blank" rel="external">https://redis.io/。</a><br>Redis 支持 32 位和 64 位。<br>这个需要根据你系统平台的实际情况选择，这里我们下载 Redis-x64-xxx.zip,解压后，将文件夹重新命名为 redis。        </p>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>Redis 的配置文件位于 Redis 安装目录下，文件名为 redis.conf。<br>参数说明:<a href="https://ckj258.github.io/2017/01/17/redis_option/。" target="_blank" rel="external">https://ckj258.github.io/2017/01/17/redis_option/。</a>    </p>
 <h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><p>打开一个 cmd 窗口 使用cd命令切换目录/redis 运行 redis-server redis.conf。<br><img src="/assets/image/redis_running.png" alt="">   </p>
 <h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>这时候另启一个cmd窗口，原来的不要关闭，不然就无法访问服务端了。<br>切换到redis目录下运行  redis-cli -h host -p port -a password(redis-cli -h 127.0.0.1 -p 6379)。<br>设置键值对 set name Dantel<br>取出键值对 get name<br><img src="/assets/image/redis_running2.png" alt="">   </p>
 
@@ -342,11 +342,11 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">杂谈</a>
+                <a href="javascript:void(0)">node.js学习</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">node.js学习</a>
+                <a href="javascript:void(0)">杂谈</a>
               </li>
              
               <li class="article-tag-list-item">
