@@ -6,17 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2016/12 | Dantel的博客</title>
+  <title>redis的安装与部署 | Dantel的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="趔趄上岸的青年。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Dantel的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2016/12/index.html">
+  <meta name="description" content="REmote DIctionary Server(Redis) 是一个由Salvatore Sanfilippo写的key-value存储系统。Redis是一个开源的使用ANSI C语言编写、遵守BSD协议、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="redis的安装与部署">
+<meta property="og:url" content="http://yoursite.com/2017/01/17/redis_generate/index.html">
 <meta property="og:site_name" content="Dantel的博客">
-<meta property="og:description" content="趔趄上岸的青年。">
+<meta property="og:description" content="REmote DIctionary Server(Redis) 是一个由Salvatore Sanfilippo写的key-value存储系统。Redis是一个开源的使用ANSI C语言编写、遵守BSD协议、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。">
+<meta property="og:image" content="http://yoursite.com/assets/image/redis_running.png">
+<meta property="og:image" content="http://yoursite.com/assets/image/redis_running2.png">
+<meta property="og:updated_time" content="2017-01-17T03:29:56.696Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Dantel的博客">
-<meta name="twitter:description" content="趔趄上岸的青年。">
+<meta name="twitter:title" content="redis的安装与部署">
+<meta name="twitter:description" content="REmote DIctionary Server(Redis) 是一个由Salvatore Sanfilippo写的key-value存储系统。Redis是一个开源的使用ANSI C语言编写、遵守BSD协议、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。">
+<meta name="twitter:image" content="http://yoursite.com/assets/image/redis_running.png">
   
     <link rel="alternative" href="/atom.xml" title="Dantel的博客" type="application/atom+xml">
   
@@ -140,118 +144,151 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-redis_generate" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      redis的安装与部署
+    </h1>
+  
+
+        <a href="/2017/01/17/redis_generate/" class="archive-article-date">
+  	<time datetime="2017-01-17T01:55:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-17</time>
+</a>
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>REmote DIctionary Server(Redis) 是一个由Salvatore Sanfilippo写的key-value存储系统。<br>Redis是一个开源的使用ANSI C语言编写、遵守BSD协议、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。   </p>
+<a id="more"></a>
+<h2 id="运行redis"><a href="#运行redis" class="headerlink" title="运行redis"></a>运行redis</h2><h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p>下载地址 ：<a href="https://redis.io/" target="_blank" rel="external">https://redis.io/</a><br>Redis 支持 32 位和 64 位。<br>这个需要根据你系统平台的实际情况选择，这里我们下载 Redis-x64-xxx.zip,解压后，将文件夹重新命名为 redis。        </p>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>Redis 的配置文件位于 Redis 安装目录下，文件名为 redis.conf。<br>参数说明 : <a href="https://ckj258.github.io/2017/01/17/redis_option/" target="_blank" rel="external">https://ckj258.github.io/2017/01/17/redis_option/</a>    </p>
+<h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><p>打开一个 cmd 窗口 使用cd命令切换目录/redis 运行 redis-server redis.conf。<br><img src="/assets/image/redis_running.png" alt="">   </p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>这时候另启一个cmd窗口，原来的不要关闭，不然就无法访问服务端了。<br>切换到redis目录下运行  redis-cli -h host -p port -a password(redis-cli -h 127.0.0.1 -p 6379)。<br>设置键值对 set name Dantel<br>取出键值对 get name<br><img src="/assets/image/redis_running2.png" alt="">   </p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>赏包辣条吧<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/12/20/pomelo-chatserver/" class="archive-article-date">
-  	<time datetime="2016-12-20T08:55:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/20/pomelo-chatserver/">pomelo学习入门笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pomelo/">pomelo</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node-js学习/">node.js学习</a></li></ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACIklEQVR42u3aMXLDMAwFUd//0krrIqL2A3QhcFllbEvkS4EBQHw+eF1fq/b53d/kbduWDBkyXsu4lotsQDa+e/P6W3I2GTJknMNYH46HTh5Y070ezixDhgwZIESShI8EcRkyZMjYxSAlKP+EfCtDhgwZpIjttOo6aejmWlyGDBkvZHSO8uu/f3K/IUOGjFcxrnDVWm88WawtGTJkzGZ0CtRaubsr4MqQIeMcBh+A6GRiJMjykP3PL2XIkDGaQS4aSZuMP5teCfDBDhkyZMxm8FGJfnO/1kMjiaYMGTKmMtKNO2niGtz6Z8mQIWM0g6d96XBGLekkCSK6ZZUhQ8Y4RlDplravBW5+RSpDhowTGHtbYLUilsPQTawMGTLGMXiyuGubdPiM7ChDhoypDN5iSwe/SJLHS9Y4KZQhQ8ZQRi2M1sYySIEaFLEyZMg4hsHTu35bLX0/mhaRIUPGUAYPcCSZ67TGaoH79p0yZMgYx0gf4E3/lM1/j+5gZciQMZRRG+HiIbVTxMZ5rgwZMg5gpIUu+bZ2zYA+lyFDxjEMvtLBL55uFgdBZMiQMZRxhYsfLn22RZUhQ8ZoRhpe02GL2nBGmpjKkCHjBEZaaqYlKE8cWwFXhgwZBzD44EX6VG04bFstLkOGjIMZneBbO+7DXjJkyJCBW2bpMBm/Tnh4VoYMGQcw+GjpupXfv+Ashm8ZMmSMZnRKxzW4c4iULUOGjKGMP69ofkwLct90AAAAAElFTkSuQmCC" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/12/13/pomelo-libpomelo/" class="archive-article-date">
-  	<time datetime="2016-12-13T06:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/13/pomelo-libpomelo/">pomelo服务器与cocos2d交互</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pomelo/">pomelo</a></li></ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/12/07/hello-world/" class="archive-article-date">
-  	<time datetime="2016-12-07T03:54:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-07</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/07/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/杂谈/">杂谈</a></li></ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+    <a href="/2017/01/17/node_redis/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          node调用redis
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2016/12/20/pomelo-chatserver/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">pomelo学习入门笔记</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
+</nav>
 
-    
+
+
+
+
+
+
 
 
           </div>
@@ -274,8 +311,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

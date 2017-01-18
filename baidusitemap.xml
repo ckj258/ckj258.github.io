@@ -5,10 +5,10 @@
     
   <url>
     <loc>http://yoursite.com/2017/01/17/node_redis/</loc>
-    <lastmod>2017-01-17T03:09:55.976Z</lastmod>
+    <lastmod>2017-01-18T07:42:13.428Z</lastmod>
     <data>
         <display>
-        <title>redis的安装与部署</title>
+        <title>node调用redis</title>
         <pubTime>2017-01-17T01:55:52.000Z</pubTime>
         
         <tag>node.js学习</tag>
@@ -22,11 +22,28 @@
     
   <url>
     <loc>http://yoursite.com/2017/01/17/redis_option/</loc>
-    <lastmod>2017-01-17T03:06:07.363Z</lastmod>
+    <lastmod>2017-01-18T07:31:31.687Z</lastmod>
     <data>
         <display>
         <title>redis配置参数说明</title>
         <pubTime>2017-01-17T02:32:49.000Z</pubTime>
+        
+        <tag>node.js学习</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/01/17/redis_generate/</loc>
+    <lastmod>2017-01-17T03:29:56.696Z</lastmod>
+    <data>
+        <display>
+        <title>redis的安装与部署</title>
+        <pubTime>2017-01-17T01:55:52.000Z</pubTime>
         
         <tag>node.js学习</tag>
          
