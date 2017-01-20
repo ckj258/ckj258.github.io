@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2017/01/20/DataStructure_BinaryTree/</loc>
+    
+    <lastmod>2017-01-20T05:06:29.434Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/01/17/node_redis/</loc>
     
     <lastmod>2017-01-18T07:42:13.428Z</lastmod>
