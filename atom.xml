@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-01-20T05:06:29.434Z</updated>
+  <updated>2017-01-23T02:46:25.146Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>redis实用之session管理</title>
+    <link href="http://yoursite.com/2017/01/22/node_redis_example_session/"/>
+    <id>http://yoursite.com/2017/01/22/node_redis_example_session/</id>
+    <published>2017-01-22T08:33:08.768Z</published>
+    <updated>2017-01-23T02:46:25.146Z</updated>
+    
+    <content type="html"><![CDATA[<p>在游戏服务器里，登录服务器是必不可少的一块<br>运用redis设置带时效的缓存，可以很好的解决session管理的问题。。<br><a id="more"></a></p>
+<h2 id="sessionManager"><a href="#sessionManager" class="headerlink" title="sessionManager"></a>sessionManager</h2><h3 id="用户登录"><a href="#用户登录" class="headerlink" title="用户登录"></a>用户登录</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 用户登录</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">LoginIn</span>(<span class="params">userinfo</span>) </span>&#123;</div><div class="line">	redishelper.setValueWithExpire(getNewSessionId(),userinfo,SESSION_EXPIRE);</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="用户登出"><a href="#用户登出" class="headerlink" title="用户登出"></a>用户登出</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 用户登出</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">loginOut</span>(<span class="params">session_id</span>) </span>&#123;</div><div class="line">	redishelper.getVaule(session_id,<span class="function"><span class="keyword">function</span>(<span class="params">err,redis_result</span>) </span>&#123;</div><div class="line"><span class="keyword">if</span>(!err)</div><div class="line">&#123;</div><div class="line">	saveInfoToDB(redis_result);</div><div class="line">	<span class="comment">////将缓存存储到数据库</span></div><div class="line">&#125;</div><div class="line">		redishelper.del(session_id);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="判断用户是否登录"><a href="#判断用户是否登录" class="headerlink" title="判断用户是否登录"></a>判断用户是否登录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 判断用户是否登录</div><div class="line"> */</div><div class="line">function isLogin(session_id, callback) &#123;</div><div class="line">	(function(session_id)&#123;</div><div class="line">		redishelper.getVaule(session_id, function(err, redis_result)&#123;</div><div class="line">			if(err) &#123;</div><div class="line">				callback(false, agreement.redisErrorDesc);</div><div class="line">				return ;</div><div class="line">			&#125;</div><div class="line">			if(redis_result != undefined) &#123;</div><div class="line">				callback(true, JSON.parse(redis_result));</div><div class="line">				return ;</div><div class="line">			&#125;</div><div class="line">			callback(false, agreement.invalidSessionIdDesc);</div><div class="line">		&#125;);</div><div class="line">	&#125;)(session_id);</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="获取一个会话ID"><a href="#获取一个会话ID" class="headerlink" title="获取一个会话ID"></a>获取一个会话ID</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 获取一个会话ID</div><div class="line"> */</div><div class="line">function getNewSessionId() &#123;</div><div class="line">	if(startVaule === 0) &#123;</div><div class="line">		startVaule = parseInt(new Date().getTime());</div><div class="line">	&#125;</div><div class="line">	startVaule++;</div><div class="line">	return SESSION_ID_HEAD + startVaule;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="调用示例"><a href="#调用示例" class="headerlink" title="调用示例"></a>调用示例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">function login(user_id, passwords, callback) &#123;</div><div class="line"></div><div class="line">		user_db.isUserIdExit(dbmanager.getClientS(), user_id, passwords,function(errorcode, result) &#123;</div><div class="line">			if(errorcode === 0) &#123;</div><div class="line">				successGetUserLoginInfo(result,callback);</div><div class="line">			&#125;else &#123;</div><div class="line">				if(errorcode === 201) &#123;</div><div class="line">					callback(agreement.dbErrorDesc);</div><div class="line">				&#125;else &#123;</div><div class="line">					callback(agreement.noUserInfoDesc);</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">		&#125;);</div><div class="line">&#125;</div><div class="line">// 去DB查询用户信息并更新缓存</div><div class="line">function successGetUserLoginInfo(result, callback) &#123;</div><div class="line">	(function(result)&#123;</div><div class="line">		player_logic.getPlayerInfo(result.user_id, result.fortune_id, function(success, user_result)&#123;</div><div class="line">			var clientResult;</div><div class="line">			if(success) &#123;</div><div class="line">				var session_id = session_manager.getNewSessionId();</div><div class="line">				var newResult = createUserSessionInfo(session_id, result, user_result);</div><div class="line">				session_manager.LogicIn(newResult,session_id);</div><div class="line">				clientResult = getLoginSuccessInfo(newResult.session_id);</div><div class="line">			&#125; else &#123;</div><div class="line">				clientResult = agreement.dbErrorDesc;</div><div class="line">			&#125;</div><div class="line">			console.log(&apos;clientResult : &apos; + JSON.stringify(clientResult));</div><div class="line">			callback(JSON.stringify(clientResult));</div><div class="line">		&#125;);</div><div class="line">	&#125;)(result);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在游戏服务器里，登录服务器是必不可少的一块&lt;br&gt;运用redis设置带时效的缓存，可以很好的解决session管理的问题。。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="node.js学习" scheme="http://yoursite.com/tags/node-js%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>二叉树的实现（c++）</title>
@@ -55,7 +81,7 @@
     <link href="http://yoursite.com/2017/01/17/redis_option/"/>
     <id>http://yoursite.com/2017/01/17/redis_option/</id>
     <published>2017-01-17T02:32:49.000Z</published>
-    <updated>2017-01-18T07:31:31.687Z</updated>
+    <updated>2017-01-23T02:46:54.290Z</updated>
     
     <content type="html"><![CDATA[<h2 id="redis配置参数说明"><a href="#redis配置参数说明" class="headerlink" title="redis配置参数说明"></a>redis配置参数说明</h2><p><a id="more"></a>参数说明<br>redis.conf 配置项说明如下：</p>
 <ol>
@@ -111,7 +137,7 @@
     <link href="http://yoursite.com/2017/01/17/node_redis/"/>
     <id>http://yoursite.com/2017/01/17/node_redis/</id>
     <published>2017-01-17T01:55:52.000Z</published>
-    <updated>2017-01-18T07:42:13.428Z</updated>
+    <updated>2017-01-23T02:46:19.371Z</updated>
     
     <content type="html"><![CDATA[<p>REmote DIctionary Server(Redis) 是一个由Salvatore Sanfilippo写的key-value存储系统。<br>Redis是一个开源的使用ANSI C语言编写、遵守BSD协议、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。   </p>
 <a id="more"></a>
@@ -141,7 +167,7 @@
     <link href="http://yoursite.com/2017/01/17/redis_generate/"/>
     <id>http://yoursite.com/2017/01/17/redis_generate/</id>
     <published>2017-01-17T01:55:52.000Z</published>
-    <updated>2017-01-17T03:29:56.696Z</updated>
+    <updated>2017-01-23T02:46:48.804Z</updated>
     
     <content type="html"><![CDATA[<p>REmote DIctionary Server(Redis) 是一个由Salvatore Sanfilippo写的key-value存储系统。<br>Redis是一个开源的使用ANSI C语言编写、遵守BSD协议、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。   </p>
 <a id="more"></a>
@@ -167,7 +193,7 @@
     <link href="http://yoursite.com/2016/12/20/pomelo-chatserver/"/>
     <id>http://yoursite.com/2016/12/20/pomelo-chatserver/</id>
     <published>2016-12-20T08:55:19.000Z</published>
-    <updated>2016-12-20T09:44:42.185Z</updated>
+    <updated>2017-01-23T02:46:32.226Z</updated>
     
     <content type="html"><![CDATA[<p>github : <a href="https://github.com/ckj258/PomeloClient/game-server" target="_blank" rel="external">https://github.com/ckj258/PomeloClient/game-server</a></p>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>pomelo是一个游戏服务器框架，使用很简单。<br>它包括基础开发框架和一系列相关工具和库，可以帮助开发者省去游戏开发中枯燥的重复劳动和底层逻辑工作，<br>让开发者可以更多地去关注游戏的具体逻辑，大大提高开发效率。    </p>
@@ -198,7 +224,7 @@
     <link href="http://yoursite.com/2016/12/13/pomelo-libpomelo/"/>
     <id>http://yoursite.com/2016/12/13/pomelo-libpomelo/</id>
     <published>2016-12-13T06:30:00.000Z</published>
-    <updated>2016-12-20T08:56:03.401Z</updated>
+    <updated>2017-01-23T02:46:42.866Z</updated>
     
     <content type="html"><![CDATA[<p>github : <a href="https://github.com/ckj258/PomeloClient/" target="_blank" rel="external">https://github.com/ckj258/PomeloClient/</a></p>
 <p>Pomelo 是基于 Node.js 的高性能、分布式游戏服务器框架。<br>非常适合用来开发轻量级手游。<br>之前一直在用pomelo-cocos2dx架构，在此记录一下使用心得。  </p>
