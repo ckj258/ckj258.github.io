@@ -3,7 +3,7 @@ layout: post
 title: "pomelo服务器与cocos2d交互"
 date: 2016-12-13 14:30
 comments: true
-reward: true
+reward: false
 tags: 
 	- pomelo
 ---

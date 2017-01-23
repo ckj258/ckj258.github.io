@@ -6,24 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>pomelo服务器与cocos2d交互 | Dantel的博客</title>
+  <title>redis实用之session管理 | Dantel的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="github : https://github.com/ckj258/PomeloClient/
-Pomelo 是基于 Node.js 的高性能、分布式游戏服务器框架。非常适合用来开发轻量级手游。之前一直在用pomelo-cocos2dx架构，在此记录一下使用心得。">
+  <meta name="description" content="在游戏服务器里，登录服务器是必不可少的一块运用redis设置带时效的缓存，可以很好的解决session管理的问题。。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="pomelo服务器与cocos2d交互">
-<meta property="og:url" content="http://yoursite.com/2016/12/13/pomelo-libpomelo/index.html">
+<meta property="og:title" content="redis实用之session管理">
+<meta property="og:url" content="http://yoursite.com/2017/01/22/node_redis_example_session/index.html">
 <meta property="og:site_name" content="Dantel的博客">
-<meta property="og:description" content="github : https://github.com/ckj258/PomeloClient/
-Pomelo 是基于 Node.js 的高性能、分布式游戏服务器框架。非常适合用来开发轻量级手游。之前一直在用pomelo-cocos2dx架构，在此记录一下使用心得。">
-<meta property="og:image" content="http://yoursite.com/assets/image/pomelo_screenshot1.png">
-<meta property="og:image" content="http://yoursite.com/assets/image/pomelo_screenshot2.png">
-<meta property="og:updated_time" content="2017-01-23T02:46:42.866Z">
+<meta property="og:description" content="在游戏服务器里，登录服务器是必不可少的一块运用redis设置带时效的缓存，可以很好的解决session管理的问题。。">
+<meta property="og:updated_time" content="2017-01-23T02:46:25.146Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="pomelo服务器与cocos2d交互">
-<meta name="twitter:description" content="github : https://github.com/ckj258/PomeloClient/
-Pomelo 是基于 Node.js 的高性能、分布式游戏服务器框架。非常适合用来开发轻量级手游。之前一直在用pomelo-cocos2dx架构，在此记录一下使用心得。">
-<meta name="twitter:image" content="http://yoursite.com/assets/image/pomelo_screenshot1.png">
+<meta name="twitter:title" content="redis实用之session管理">
+<meta name="twitter:description" content="在游戏服务器里，登录服务器是必不可少的一块运用redis设置带时效的缓存，可以很好的解决session管理的问题。。">
   
     <link rel="alternative" href="/atom.xml" title="Dantel的博客" type="application/atom+xml">
   
@@ -147,37 +141,30 @@ Pomelo 是基于 Node.js 的高性能、分布式游戏服务器框架。非常�
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-pomelo-libpomelo" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-node_redis_example_session" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      pomelo服务器与cocos2d交互
+      redis实用之session管理
     </h1>
   
 
-        <a href="/2016/12/13/pomelo-libpomelo/" class="archive-article-date">
-  	<time datetime="2016-12-13T06:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-13</time>
+        <a href="/2017/01/22/node_redis_example_session/" class="archive-article-date">
+  	<time datetime="2017-01-22T08:33:08.768Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-22</time>
 </a>
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>github : <a href="https://github.com/ckj258/PomeloClient/" target="_blank" rel="external">https://github.com/ckj258/PomeloClient/</a></p>
-<p>Pomelo 是基于 Node.js 的高性能、分布式游戏服务器框架。<br>非常适合用来开发轻量级手游。<br>之前一直在用pomelo-cocos2dx架构，在此记录一下使用心得。  </p>
-<a id="more"></a>
-<h2 id="运行项目"><a href="#运行项目" class="headerlink" title="运行项目"></a>运行项目</h2><h3 id="Client"><a href="#Client" class="headerlink" title="Client"></a>Client</h3><p>coco2dx引擎版本3.10，拷贝引擎文件至根目录编译，运行  </p>
-<h3 id="Server"><a href="#Server" class="headerlink" title="Server"></a>Server</h3><p>cd game-server<br><br>npm install<br><br>pomelo start<br></p>
-<h2 id="类详解"><a href="#类详解" class="headerlink" title="类详解"></a>类详解</h2><h3 id="PomeloSocket"><a href="#PomeloSocket" class="headerlink" title="PomeloSocket"></a>PomeloSocket</h3><p>负责与server的交互<br>主要方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">	void conConnect(const char*ServerIP, int ServerPort	);//建立连接</div><div class="line">	void quit();										  //断开连接</div><div class="line"></div><div class="line">/* ==============================================================================</div><div class="line"> * 功能描述：发送事件,回调函数 typedef void (*pc_notify_cb_t)(const pc_notify_t* req, int rc);  rc表示错误码,无参数返回. 例用于上传游戏数据等等</div><div class="line"> * 创 建 者：ckj</div><div class="line"> * 创建日期：2016年12月13日17:30:49</div><div class="line"> * ==============================================================================*/</div><div class="line">	void sendEvents(const char* params, const char*remote, pc_notify_cb_t event_cb);</div><div class="line">/* ==============================================================================</div><div class="line"> * 功能描述：发送请求,回调函数 typedef void (*pc_request_cb_t)(const pc_request_t* req, int rc, const char* resp);  rc表示错误码,resp为服务器json结构. 例用于登录等需要返回结果的场景  </div><div class="line"> * 创 建 者：ckj</div><div class="line"> * 创建日期：2016年12月13日17:33:53</div><div class="line"> * ==============================================================================*/</div><div class="line">	void sendRequest(const char* params, const char*remote, pc_request_cb_t request_cb);</div></pre></td></tr></table></figure></p>
-<h3 id="PomeloHandler"><a href="#PomeloHandler" class="headerlink" title="PomeloHandler"></a>PomeloHandler</h3><p>观察者模式中的观察者，负责向游戏中注册监听的对象发放广播<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">void addHandlerListen(PomeloListen* listen);//添加监听listen</div></pre></td></tr></table></figure></p>
-<h3 id="PomeloListen"><a href="#PomeloListen" class="headerlink" title="PomeloListen"></a>PomeloListen</h3><p>观察者模式中的对象，一个纯虚类，负责接收消息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">virtual void handle_event(const char* msgId, const char* msgBody)=0;  //msgId为服务器notify分发的remote</div></pre></td></tr></table></figure></p>
-<h2 id="调用方法"><a href="#调用方法" class="headerlink" title="调用方法"></a>调用方法</h2><p>因为pomelo基于分布式游戏服务器框架，所以进入游戏时最好通过http请求获取TCP连接ip和port<br>然后调用onConnect建立连接</p>
-<p>游戏中将需要注册监听的对象继承PomeloListen，重写handle_event()方法即可<br>具体示例见ChatDialog.hpp ChatDialog.cpp</p>
-<h2 id="效果截图"><a href="#效果截图" class="headerlink" title="效果截图"></a>效果截图</h2><p><img src="/assets/image/pomelo_screenshot1.png" alt=""><br><img src="/assets/image/pomelo_screenshot2.png" alt="">  </p>
-<p>界面粗糙，请勿见怪</p>
-<h2 id="platform"><a href="#platform" class="headerlink" title="platform"></a>platform</h2><p>android和mac自行链接对应库文件</p>
+        <p>在游戏服务器里，登录服务器是必不可少的一块<br>运用redis设置带时效的缓存，可以很好的解决session管理的问题。。<br><a id="more"></a></p>
+<h2 id="sessionManager"><a href="#sessionManager" class="headerlink" title="sessionManager"></a>sessionManager</h2><h3 id="用户登录"><a href="#用户登录" class="headerlink" title="用户登录"></a>用户登录</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 用户登录</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">LoginIn</span>(<span class="params">userinfo</span>) </span>&#123;</div><div class="line">	redishelper.setValueWithExpire(getNewSessionId(),userinfo,SESSION_EXPIRE);</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="用户登出"><a href="#用户登出" class="headerlink" title="用户登出"></a>用户登出</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 用户登出</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">loginOut</span>(<span class="params">session_id</span>) </span>&#123;</div><div class="line">	redishelper.getVaule(session_id,<span class="function"><span class="keyword">function</span>(<span class="params">err,redis_result</span>) </span>&#123;</div><div class="line"><span class="keyword">if</span>(!err)</div><div class="line">&#123;</div><div class="line">	saveInfoToDB(redis_result);</div><div class="line">	<span class="comment">////将缓存存储到数据库</span></div><div class="line">&#125;</div><div class="line">		redishelper.del(session_id);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="判断用户是否登录"><a href="#判断用户是否登录" class="headerlink" title="判断用户是否登录"></a>判断用户是否登录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 判断用户是否登录</div><div class="line"> */</div><div class="line">function isLogin(session_id, callback) &#123;</div><div class="line">	(function(session_id)&#123;</div><div class="line">		redishelper.getVaule(session_id, function(err, redis_result)&#123;</div><div class="line">			if(err) &#123;</div><div class="line">				callback(false, agreement.redisErrorDesc);</div><div class="line">				return ;</div><div class="line">			&#125;</div><div class="line">			if(redis_result != undefined) &#123;</div><div class="line">				callback(true, JSON.parse(redis_result));</div><div class="line">				return ;</div><div class="line">			&#125;</div><div class="line">			callback(false, agreement.invalidSessionIdDesc);</div><div class="line">		&#125;);</div><div class="line">	&#125;)(session_id);</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="获取一个会话ID"><a href="#获取一个会话ID" class="headerlink" title="获取一个会话ID"></a>获取一个会话ID</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 获取一个会话ID</div><div class="line"> */</div><div class="line">function getNewSessionId() &#123;</div><div class="line">	if(startVaule === 0) &#123;</div><div class="line">		startVaule = parseInt(new Date().getTime());</div><div class="line">	&#125;</div><div class="line">	startVaule++;</div><div class="line">	return SESSION_ID_HEAD + startVaule;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="调用示例"><a href="#调用示例" class="headerlink" title="调用示例"></a>调用示例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">function login(user_id, passwords, callback) &#123;</div><div class="line"></div><div class="line">		user_db.isUserIdExit(dbmanager.getClientS(), user_id, passwords,function(errorcode, result) &#123;</div><div class="line">			if(errorcode === 0) &#123;</div><div class="line">				successGetUserLoginInfo(result,callback);</div><div class="line">			&#125;else &#123;</div><div class="line">				if(errorcode === 201) &#123;</div><div class="line">					callback(agreement.dbErrorDesc);</div><div class="line">				&#125;else &#123;</div><div class="line">					callback(agreement.noUserInfoDesc);</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">		&#125;);</div><div class="line">&#125;</div><div class="line">// 去DB查询用户信息并更新缓存</div><div class="line">function successGetUserLoginInfo(result, callback) &#123;</div><div class="line">	(function(result)&#123;</div><div class="line">		player_logic.getPlayerInfo(result.user_id, result.fortune_id, function(success, user_result)&#123;</div><div class="line">			var clientResult;</div><div class="line">			if(success) &#123;</div><div class="line">				var session_id = session_manager.getNewSessionId();</div><div class="line">				var newResult = createUserSessionInfo(session_id, result, user_result);</div><div class="line">				session_manager.LogicIn(newResult,session_id);</div><div class="line">				clientResult = getLoginSuccessInfo(newResult.session_id);</div><div class="line">			&#125; else &#123;</div><div class="line">				clientResult = agreement.dbErrorDesc;</div><div class="line">			&#125;</div><div class="line">			console.log(&apos;clientResult : &apos; + JSON.stringify(clientResult));</div><div class="line">			callback(JSON.stringify(clientResult));</div><div class="line">		&#125;);</div><div class="line">	&#125;)(result);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
 
@@ -209,7 +196,7 @@ Pomelo 是基于 Node.js 的高性能、分布式游戏服务器框架。非常�
       
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pomelo/">pomelo</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node-js学习/">node.js学习</a></li></ul>
 	</div>
 
       
@@ -262,7 +249,7 @@ Pomelo 是基于 Node.js 的高性能、分布式游戏服务器框架。非常�
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMklEQVR42u3aza6CQAwGUN//pblbE8P4tYM3oRxWhhiY46L27/WKr+Pjer//+c2zJ5w98+zOxRcGBsZtGcfyWn8nOfr6oOsfIjkbBgbGcxjrEJkHx/yg6ydUwzcGBgZG8speLldNPTEwMDCqr6kWvfuJIwYGxpMZeZla5fUK1x/W4hgYGDdk9NK4//n8k/kGBgbGrRjHD66dZLF3KgwMjNmMXuqWDwaqQ4KtQSYGBsZQRn6IqxptvYK5vGaBgYExlNGrgHsLE+uRQPmZGBgYoxnJaDAvOJNEMx855H8JGBgYsxkXDAWLSxt5yC6wMTAwHsC4qrzcCd9bo00MDIzRjOqCRVJ89rYj8uCbh3IMDIx5jGoozIvY3luq5TEGBsZURtWaN9Gq7bOtVh0GBsYDGPsDxeqyRTU0N7uGGBgYIxi9dC1v1fUK12q6iYGBMZuRp4O9VloegvOg/2XZAgMDYzQjX9iqLm/1BpAYGBgY64CbwHotuTyVzAtjDAyM2YxemywPiNVRaJ6MRgUtBgbGCEY1EeyF42QA0Ps5MDAwnsDYWQirNt3223lRnouBgTGOcRSvfMy5X+6W/zcwMDCGMq4KoPl6RHWE0KzIMTAwxjGSIFsNoPmdXsAt/3tgYGCMYPQe3QvE5cFkXspiYGA8nlEN00lKVx1enn4TAwMDYyNlvGq08KW4xcDAeAAjKWJ7zf3ecZMlj2a7DQMD44aMPPwl4bi6cpEXuvsrIBgYGDdk/AHWz0HPlZ60oQAAAABJRU5ErkJggg==" alt="微信分享二维码">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKUlEQVR42u3a0U7DMAwF0P3/TxeJJxBqubYzRNOTp0rbkp4gGSf26xWP43P8fP75na/j7NPrX53Nv2BgYGDclnFcjuQlrudMVjnbpuT7GBgYz2HkQbb6KtWNyIM7BgYGRhJwr8NrtPyqeTAwMDCKR9PJERcDAwNjcojtXatN5nzLWRwDA+OGjElh4N3Pf1TfwMDA+MeMozUmv101w7fZMDAwtmZM0r7JEbdaLo0OtxgYGJsyqgskpcdqi0Z+VXc6JwYGxtaM3sG1unzO6G0EBgbGMxn5dfykwSJPPUd/BwwMjI0Y1bNvvtjksNqsx2JgYGzH6KVuk4SvF4h/CbgYGBhbM3rNXr1AXG25KCeIGBgY2zEmr5WfifMSQjPoY2BgbM2oJmTXyyfP8y0rdI5gYGBsxCi3ihbzsV4aWr2Sw8DA2JWRB9B8TIqaPSoGBsYTGO9rvEi2qZdQYmBgPIfRC7L5pX+eek5mwMDA2JuRX9nnUyef9tLEwv8NDAyMjRj5a+XtFNXW1UmrKwYGxhMYk6aHampY3Y5lhQEMDIybM3rNFvOUMbn6b24QBgbGdoyjOHqkajmzmjhiYGDszZi0UExSwFWFTAwMjOcwqkF23tRVTS5HJQEMDIyNGJMgm79uXn4oly4wMDAw4kv8yYVddcVlARcDA2MjRhJke61m1eCOgYHxTEa1GJDf4eVXaUni2KxyYGBg3JwxybtWXbflSeSyEiYGBsY9GB8aPx3zoFTI7AAAAABJRU5ErkJggg==" alt="微信分享二维码">
     </div>
 </div>
 
@@ -276,18 +263,9 @@ Pomelo 是基于 Node.js 的高性能、分布式游戏服务器框架。非常�
   
 <nav id="article-nav">
   
-    <a href="/2016/12/20/pomelo-chatserver/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          pomelo学习入门笔记
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/12/07/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
+    <a href="/2017/01/20/DataStructure_BinaryTree/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">二叉树的实现（c++）</div>
       <i class="icon-circle-right"></i>
     </a>
   

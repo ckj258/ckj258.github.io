@@ -3,7 +3,7 @@ layout: post
 title: "pomelo学习入门笔记"
 date: 2016-12-20 16:55:19
 comments: true
-reward: true
+reward: false
 tags: 
 	- pomelo
 ---

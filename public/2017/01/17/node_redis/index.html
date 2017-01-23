@@ -6,21 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>redis的安装与部署 | Dantel的博客</title>
+  <title>node调用redis | Dantel的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="REmote DIctionary Server(Redis) 是一个由Salvatore Sanfilippo写的key-value存储系统。Redis是一个开源的使用ANSI C语言编写、遵守BSD协议、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="redis的安装与部署">
+<meta property="og:title" content="node调用redis">
 <meta property="og:url" content="http://yoursite.com/2017/01/17/node_redis/index.html">
 <meta property="og:site_name" content="Dantel的博客">
 <meta property="og:description" content="REmote DIctionary Server(Redis) 是一个由Salvatore Sanfilippo写的key-value存储系统。Redis是一个开源的使用ANSI C语言编写、遵守BSD协议、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。">
-<meta property="og:image" content="http://yoursite.com/assets/image/redis_running.png">
-<meta property="og:image" content="http://yoursite.com/assets/image/redis_running2.png">
-<meta property="og:updated_time" content="2017-01-17T03:09:55.976Z">
+<meta property="og:image" content="http://yoursite.com/assets/image/node_redis_1.png">
+<meta property="og:updated_time" content="2017-01-23T02:46:19.371Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="redis的安装与部署">
+<meta name="twitter:title" content="node调用redis">
 <meta name="twitter:description" content="REmote DIctionary Server(Redis) 是一个由Salvatore Sanfilippo写的key-value存储系统。Redis是一个开源的使用ANSI C语言编写、遵守BSD协议、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。">
-<meta name="twitter:image" content="http://yoursite.com/assets/image/redis_running.png">
+<meta name="twitter:image" content="http://yoursite.com/assets/image/node_redis_1.png">
   
     <link rel="alternative" href="/atom.xml" title="Dantel的博客" type="application/atom+xml">
   
@@ -151,7 +150,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      redis的安装与部署
+      node调用redis
     </h1>
   
 
@@ -164,10 +163,14 @@
       
         <p>REmote DIctionary Server(Redis) 是一个由Salvatore Sanfilippo写的key-value存储系统。<br>Redis是一个开源的使用ANSI C语言编写、遵守BSD协议、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。   </p>
 <a id="more"></a>
-<h2 id="运行redis"><a href="#运行redis" class="headerlink" title="运行redis"></a>运行redis</h2><h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p>下载地址 ：<a href="https://redis.io/" target="_blank" rel="external">https://redis.io/</a><br>Redis 支持 32 位和 64 位。<br>这个需要根据你系统平台的实际情况选择，这里我们下载 Redis-x64-xxx.zip,解压后，将文件夹重新命名为 redis。        </p>
-<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>Redis 的配置文件位于 Redis 安装目录下，文件名为 redis.conf。<br>参数说明 : <a href="https://ckj258.github.io/2017/01/17/redis_option/" target="_blank" rel="external">https://ckj258.github.io/2017/01/17/redis_option/</a>    </p>
-<h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><p>打开一个 cmd 窗口 使用cd命令切换目录/redis 运行 redis-server redis.conf。<br><img src="/assets/image/redis_running.png" alt="">   </p>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>这时候另启一个cmd窗口，原来的不要关闭，不然就无法访问服务端了。<br>切换到redis目录下运行  redis-cli -h host -p port -a password(redis-cli -h 127.0.0.1 -p 6379)。<br>设置键值对 set name Dantel<br>取出键值对 get name<br><img src="/assets/image/redis_running2.png" alt="">   </p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install redis</div></pre></td></tr></table></figure>
+<h2 id="使用案例"><a href="#使用案例" class="headerlink" title="使用案例"></a>使用案例</h2><h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> password = <span class="string">"ckj258"</span>;</div><div class="line"><span class="keyword">var</span> redis_host = <span class="string">"127.0.0.1"</span>;</div><div class="line"><span class="keyword">var</span> redis_port = <span class="number">3101</span>;</div><div class="line"><span class="keyword">var</span> redis_options = &#123;<span class="string">"no_ready_check"</span>:config.redis.no_ready_check&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> client;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">'init redis ... ... '</span>);</div><div class="line">	client = redis.createClient(redis_port, redis_host, redis_options);</div><div class="line">	client.on(<span class="string">"error"</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</div><div class="line">  		<span class="built_in">console</span>.log(<span class="string">"redis meet Error "</span> + err + <span class="string">';'</span> + redis_host + <span class="string">';'</span> + redis_port);</div><div class="line">  		setTimeout(init, <span class="number">5</span>*<span class="number">1000</span>);	<span class="comment">// 5秒后重连</span></div><div class="line">	&#125;);</div><div class="line">	client.auth(password);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="setVaule"><a href="#setVaule" class="headerlink" title="setVaule"></a>setVaule</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">setVaule</span>(<span class="params">key, values</span>) </span>&#123;</div><div class="line">	client.set(key, values);</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="setValueWithExpire"><a href="#setValueWithExpire" class="headerlink" title="setValueWithExpire"></a>setValueWithExpire</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">setValueWithExpire</span>(<span class="params">key, values</span>) </span>&#123;</div><div class="line">	client.set(key, values);</div><div class="line">	client.expire(key, expire);	<span class="comment">// 单位秒</span></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="getVaule"><a href="#getVaule" class="headerlink" title="getVaule"></a>getVaule</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getVaule</span>(<span class="params">key, callback </span>) </span>&#123;</div><div class="line">	client.get(key, <span class="function"><span class="keyword">function</span>(<span class="params">err, redis_result</span>) </span>&#123;</div><div class="line">		callback(err, redis_result);</div><div class="line">	&#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="delVaule"><a href="#delVaule" class="headerlink" title="delVaule"></a>delVaule</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">del</span>(<span class="params">key</span>) </span>&#123;</div><div class="line">	client.del(key);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="test"><a href="#test" class="headerlink" title="test"></a>test</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">init();</div><div class="line">setVaule(&quot;name&quot;,&quot;Dantel&quot;);</div><div class="line">getVaule(&quot;name&quot;,function(err,redis_result)</div><div class="line">&#123;	</div><div class="line">	if(!error)</div><div class="line">	&#123;</div><div class="line">		console.log(redis_result);</div><div class="line">	&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h3><p><img src="/assets/image/node_redis_1.png" alt="">  </p>
 
       
 
@@ -276,8 +279,8 @@
     </a>
   
   
-    <a href="/2016/12/20/pomelo-chatserver/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">pomelo学习入门笔记</div>
+    <a href="/2017/01/17/redis_generate/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">redis的安装与部署</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -346,11 +349,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">node.js学习</a>
+                <a href="javascript:void(0)">数据结构</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)">pomelo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">node.js学习</a>
               </li>
             
             <div class="clearfix"></div>

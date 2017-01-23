@@ -6,24 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>pomelo服务器与cocos2d交互 | Dantel的博客</title>
+  <title>Tag: 数据结构 | Dantel的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="github : https://github.com/ckj258/PomeloClient/
-Pomelo 是基于 Node.js 的高性能、分布式游戏服务器框架。非常适合用来开发轻量级手游。之前一直在用pomelo-cocos2dx架构，在此记录一下使用心得。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="pomelo服务器与cocos2d交互">
-<meta property="og:url" content="http://yoursite.com/2016/12/13/pomelo-libpomelo/index.html">
+  <meta name="description" content="趔趄上岸的青年。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Dantel的博客">
+<meta property="og:url" content="http://yoursite.com/tags/数据结构/index.html">
 <meta property="og:site_name" content="Dantel的博客">
-<meta property="og:description" content="github : https://github.com/ckj258/PomeloClient/
-Pomelo 是基于 Node.js 的高性能、分布式游戏服务器框架。非常适合用来开发轻量级手游。之前一直在用pomelo-cocos2dx架构，在此记录一下使用心得。">
-<meta property="og:image" content="http://yoursite.com/assets/image/pomelo_screenshot1.png">
-<meta property="og:image" content="http://yoursite.com/assets/image/pomelo_screenshot2.png">
-<meta property="og:updated_time" content="2017-01-23T02:46:42.866Z">
+<meta property="og:description" content="趔趄上岸的青年。">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="pomelo服务器与cocos2d交互">
-<meta name="twitter:description" content="github : https://github.com/ckj258/PomeloClient/
-Pomelo 是基于 Node.js 的高性能、分布式游戏服务器框架。非常适合用来开发轻量级手游。之前一直在用pomelo-cocos2dx架构，在此记录一下使用心得。">
-<meta name="twitter:image" content="http://yoursite.com/assets/image/pomelo_screenshot1.png">
+<meta name="twitter:title" content="Dantel的博客">
+<meta name="twitter:description" content="趔趄上岸的青年。">
   
     <link rel="alternative" href="/atom.xml" title="Dantel的博客" type="application/atom+xml">
   
@@ -147,158 +140,54 @@ Pomelo 是基于 Node.js 的高性能、分布式游戏服务器框架。非常�
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-pomelo-libpomelo" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      pomelo服务器与cocos2d交互
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/01/20/DataStructure_BinaryTree/" class="archive-article-date">
+  	<time datetime="2017-01-20T02:51:40.348Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-20</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/01/20/DataStructure_BinaryTree/">二叉树的实现（c++）</a>
     </h1>
   
 
-        <a href="/2016/12/13/pomelo-libpomelo/" class="archive-article-date">
-  	<time datetime="2016-12-13T06:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-13</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>github : <a href="https://github.com/ckj258/PomeloClient/" target="_blank" rel="external">https://github.com/ckj258/PomeloClient/</a></p>
-<p>Pomelo 是基于 Node.js 的高性能、分布式游戏服务器框架。<br>非常适合用来开发轻量级手游。<br>之前一直在用pomelo-cocos2dx架构，在此记录一下使用心得。  </p>
-<a id="more"></a>
-<h2 id="运行项目"><a href="#运行项目" class="headerlink" title="运行项目"></a>运行项目</h2><h3 id="Client"><a href="#Client" class="headerlink" title="Client"></a>Client</h3><p>coco2dx引擎版本3.10，拷贝引擎文件至根目录编译，运行  </p>
-<h3 id="Server"><a href="#Server" class="headerlink" title="Server"></a>Server</h3><p>cd game-server<br><br>npm install<br><br>pomelo start<br></p>
-<h2 id="类详解"><a href="#类详解" class="headerlink" title="类详解"></a>类详解</h2><h3 id="PomeloSocket"><a href="#PomeloSocket" class="headerlink" title="PomeloSocket"></a>PomeloSocket</h3><p>负责与server的交互<br>主要方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">	void conConnect(const char*ServerIP, int ServerPort	);//建立连接</div><div class="line">	void quit();										  //断开连接</div><div class="line"></div><div class="line">/* ==============================================================================</div><div class="line"> * 功能描述：发送事件,回调函数 typedef void (*pc_notify_cb_t)(const pc_notify_t* req, int rc);  rc表示错误码,无参数返回. 例用于上传游戏数据等等</div><div class="line"> * 创 建 者：ckj</div><div class="line"> * 创建日期：2016年12月13日17:30:49</div><div class="line"> * ==============================================================================*/</div><div class="line">	void sendEvents(const char* params, const char*remote, pc_notify_cb_t event_cb);</div><div class="line">/* ==============================================================================</div><div class="line"> * 功能描述：发送请求,回调函数 typedef void (*pc_request_cb_t)(const pc_request_t* req, int rc, const char* resp);  rc表示错误码,resp为服务器json结构. 例用于登录等需要返回结果的场景  </div><div class="line"> * 创 建 者：ckj</div><div class="line"> * 创建日期：2016年12月13日17:33:53</div><div class="line"> * ==============================================================================*/</div><div class="line">	void sendRequest(const char* params, const char*remote, pc_request_cb_t request_cb);</div></pre></td></tr></table></figure></p>
-<h3 id="PomeloHandler"><a href="#PomeloHandler" class="headerlink" title="PomeloHandler"></a>PomeloHandler</h3><p>观察者模式中的观察者，负责向游戏中注册监听的对象发放广播<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">void addHandlerListen(PomeloListen* listen);//添加监听listen</div></pre></td></tr></table></figure></p>
-<h3 id="PomeloListen"><a href="#PomeloListen" class="headerlink" title="PomeloListen"></a>PomeloListen</h3><p>观察者模式中的对象，一个纯虚类，负责接收消息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">virtual void handle_event(const char* msgId, const char* msgBody)=0;  //msgId为服务器notify分发的remote</div></pre></td></tr></table></figure></p>
-<h2 id="调用方法"><a href="#调用方法" class="headerlink" title="调用方法"></a>调用方法</h2><p>因为pomelo基于分布式游戏服务器框架，所以进入游戏时最好通过http请求获取TCP连接ip和port<br>然后调用onConnect建立连接</p>
-<p>游戏中将需要注册监听的对象继承PomeloListen，重写handle_event()方法即可<br>具体示例见ChatDialog.hpp ChatDialog.cpp</p>
-<h2 id="效果截图"><a href="#效果截图" class="headerlink" title="效果截图"></a>效果截图</h2><p><img src="/assets/image/pomelo_screenshot1.png" alt=""><br><img src="/assets/image/pomelo_screenshot2.png" alt="">  </p>
-<p>界面粗糙，请勿见怪</p>
-<h2 id="platform"><a href="#platform" class="headerlink" title="platform"></a>platform</h2><p>android和mac自行链接对应库文件</p>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>赏包辣条吧<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pomelo/">pomelo</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMklEQVR42u3aza6CQAwGUN//pblbE8P4tYM3oRxWhhiY46L27/WKr+Pjer//+c2zJ5w98+zOxRcGBsZtGcfyWn8nOfr6oOsfIjkbBgbGcxjrEJkHx/yg6ydUwzcGBgZG8speLldNPTEwMDCqr6kWvfuJIwYGxpMZeZla5fUK1x/W4hgYGDdk9NK4//n8k/kGBgbGrRjHD66dZLF3KgwMjNmMXuqWDwaqQ4KtQSYGBsZQRn6IqxptvYK5vGaBgYExlNGrgHsLE+uRQPmZGBgYoxnJaDAvOJNEMx855H8JGBgYsxkXDAWLSxt5yC6wMTAwHsC4qrzcCd9bo00MDIzRjOqCRVJ89rYj8uCbh3IMDIx5jGoozIvY3luq5TEGBsZURtWaN9Gq7bOtVh0GBsYDGPsDxeqyRTU0N7uGGBgYIxi9dC1v1fUK12q6iYGBMZuRp4O9VloegvOg/2XZAgMDYzQjX9iqLm/1BpAYGBgY64CbwHotuTyVzAtjDAyM2YxemywPiNVRaJ6MRgUtBgbGCEY1EeyF42QA0Ps5MDAwnsDYWQirNt3223lRnouBgTGOcRSvfMy5X+6W/zcwMDCGMq4KoPl6RHWE0KzIMTAwxjGSIFsNoPmdXsAt/3tgYGCMYPQe3QvE5cFkXspiYGA8nlEN00lKVx1enn4TAwMDYyNlvGq08KW4xcDAeAAjKWJ7zf3ecZMlj2a7DQMD44aMPPwl4bi6cpEXuvsrIBgYGDdk/AHWz0HPlZ60oQAAAABJRU5ErkJggg==" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2016/12/20/pomelo-chatserver/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          pomelo学习入门笔记
-        
-      </div>
-    </a>
   
   
-    <a href="/2016/12/07/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
-      <i class="icon-circle-right"></i>
-    </a>
+    </div></section>
   
-</nav>
 
-
-
-
-
-
-
+    
 
 
           </div>
@@ -321,9 +210,9 @@ Pomelo 是基于 Node.js 的高性能、分布式游戏服务器框架。非常�
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",

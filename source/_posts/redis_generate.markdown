@@ -3,7 +3,7 @@ layout: post
 title: "redis的安装与部署"
 date: 2017-1-17 09:55:52
 comments: true
-reward: true
+reward: false
 tags: 
 	- node.js学习
 ---
