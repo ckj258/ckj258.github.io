@@ -123,14 +123,14 @@
 
     
   <url>
-    <loc>http://yoursite.com/2016/12/07/hello-world/</loc>
+    <loc>http://yoursite.com/2017/01/24/node_mysql/</loc>
     <lastmod>2017-01-24T07:11:45.656Z</lastmod>
     <data>
         <display>
-        <title>Hello World</title>
-        <pubTime>2016-12-07T03:54:00.000Z</pubTime>
+        <title>node调用mysql</title>
+        <pubTime>2017-01-24T07:11:45.656Z</pubTime>
         
-        <tag>杂谈</tag>
+        <tag>node.js学习</tag>
          
          
            
@@ -140,14 +140,14 @@
 
     
   <url>
-    <loc>http://yoursite.com/2017/01/24/node_mysql/</loc>
+    <loc>http://yoursite.com/2016/12/07/hello-world/</loc>
     <lastmod>2017-01-24T07:11:45.656Z</lastmod>
     <data>
         <display>
-        <title>node调用mysql</title>
-        <pubTime>2017-01-24T07:11:45.656Z</pubTime>
+        <title>Hello World</title>
+        <pubTime>2016-12-07T03:54:00.000Z</pubTime>
         
-        <tag>node.js学习</tag>
+        <tag>杂谈</tag>
          
          
            
