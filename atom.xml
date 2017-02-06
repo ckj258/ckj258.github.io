@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-01-24T07:09:37.371Z</updated>
+  <updated>2017-01-24T07:11:45.657Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,36 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>node调用mysql</title>
-    <link href="http://yoursite.com/2017/01/24/node_mysql/"/>
-    <id>http://yoursite.com/2017/01/24/node_mysql/</id>
-    <published>2017-01-24T07:03:19.456Z</published>
-    <updated>2017-01-24T07:09:37.371Z</updated>
-    
-    <content type="html"><![CDATA[<p>node.js与mysql交互。 </p>
-<a id="more"></a>
-<h2 id="npm安装"><a href="#npm安装" class="headerlink" title="npm安装"></a>npm安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install mysql</div></pre></td></tr></table></figure>
-<h2 id="使用案例"><a href="#使用案例" class="headerlink" title="使用案例"></a>使用案例</h2><h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">initClient</span>(<span class="params">callback</span>) </span>&#123;</div><div class="line">    option = &#123;</div><div class="line">        <span class="attr">host</span> : config.mysql_catchfish_debug.host,</div><div class="line">        <span class="attr">port</span> :  config.mysql_catchfish_debug.port,</div><div class="line">        <span class="attr">user</span> :  config.mysql_catchfish_debug.user,</div><div class="line">        <span class="attr">password</span> :  config.mysql_catchfish_debug.password,</div><div class="line">        <span class="attr">database</span> :  config.mysql_catchfish_debug.database</div><div class="line">    &#125;;</div><div class="line">    client = mysql.createConnection(option);</div><div class="line">    client.connect(<span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</div><div class="line">       <span class="keyword">if</span> (err) &#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">'initClient [[mysql db]]error when connecting to db:requestConnectMySqlTime = '</span> + requestConnectMySqlTime + <span class="string">';err = '</span>, err);</div><div class="line">            requestConnectMySqlTime++;</div><div class="line">            setTimeout(initClient, <span class="number">5</span>*<span class="number">1000</span>);<span class="comment">// TODO :  if retry time over 3, need send mail</span></div><div class="line">            callback(<span class="literal">false</span>);</div><div class="line">       &#125;<span class="keyword">else</span> &#123;</div><div class="line">            requestConnectMySqlTime = <span class="number">0</span>;</div><div class="line">            callback(<span class="literal">true</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    client.on(<span class="string">'error'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'initClient db error'</span>, err);</div><div class="line">        <span class="keyword">if</span> (err.code === <span class="string">'PROTOCOL_CONNECTION_LOST'</span>) &#123; <span class="comment">// 如果是连接断开，自动重新连接</span></div><div class="line">            initClient(<span class="function"><span class="keyword">function</span>(<span class="params">result</span>)</span>&#123;</div><div class="line">                <span class="built_in">console</span>.log(<span class="string">'reconnect db result : '</span> + result);</div><div class="line">            &#125;);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">syncPlayerBaseFortuneInfo</span>(<span class="params">client, sync_info, callback</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> values = [</div><div class="line">    [sync_info.user_id, sync_info.coins, sync_info.diamonds, sync_info.exps, sync_info.turrent_level]</div><div class="line">  ];</div><div class="line">  client.query(<span class="string">' INSERT INTO user_fortune_'</span> + sync_info.fortune_id + <span class="string">' (user_id, coins, diamonds, exp, turrent_level) VALUES ? '</span> +</div><div class="line">      <span class="string">' ON DUPLICATE KEY UPDATE coins = VALUES(coins),'</span> +</div><div class="line">      <span class="string">' diamonds = VALUES(diamonds) , exp = VALUES(exp), turrent_level = VALUES(turrent_level)'</span>,</div><div class="line">  	   [values],</div><div class="line">    <span class="function"><span class="keyword">function</span> (<span class="params">err, results</span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span> (err) &#123;</div><div class="line">            callback(<span class="literal">false</span>);</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line">        callback(<span class="literal">true</span>);</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;node.js与mysql交互。 &lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="node.js学习" scheme="http://yoursite.com/tags/node-js%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
     <title>redis实用之session管理</title>
-    <link href="http://yoursite.com/2017/01/22/node_redis_example_session/"/>
-    <id>http://yoursite.com/2017/01/22/node_redis_example_session/</id>
-    <published>2017-01-22T08:33:08.768Z</published>
-    <updated>2017-01-23T02:46:25.146Z</updated>
+    <link href="http://yoursite.com/2017/01/24/node_redis_example_session/"/>
+    <id>http://yoursite.com/2017/01/24/node_redis_example_session/</id>
+    <published>2017-01-24T07:11:45.657Z</published>
+    <updated>2017-01-24T07:11:45.657Z</updated>
     
     <content type="html"><![CDATA[<p>在游戏服务器里，登录服务器是必不可少的一块<br>运用redis设置带时效的缓存，可以很好的解决session管理的问题。。<br><a id="more"></a></p>
 <h2 id="sessionManager"><a href="#sessionManager" class="headerlink" title="sessionManager"></a>sessionManager</h2><h3 id="用户登录"><a href="#用户登录" class="headerlink" title="用户登录"></a>用户登录</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 用户登录</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">LoginIn</span>(<span class="params">userinfo</span>) </span>&#123;</div><div class="line">	redishelper.setValueWithExpire(getNewSessionId(),userinfo,SESSION_EXPIRE);</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -67,11 +42,36 @@
   </entry>
   
   <entry>
+    <title>node调用mysql</title>
+    <link href="http://yoursite.com/2017/01/24/node_mysql/"/>
+    <id>http://yoursite.com/2017/01/24/node_mysql/</id>
+    <published>2017-01-24T07:11:45.656Z</published>
+    <updated>2017-01-24T07:11:45.656Z</updated>
+    
+    <content type="html"><![CDATA[<p>node.js与mysql交互。 </p>
+<a id="more"></a>
+<h2 id="npm安装"><a href="#npm安装" class="headerlink" title="npm安装"></a>npm安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install mysql</div></pre></td></tr></table></figure>
+<h2 id="使用案例"><a href="#使用案例" class="headerlink" title="使用案例"></a>使用案例</h2><h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">initClient</span>(<span class="params">callback</span>) </span>&#123;</div><div class="line">    option = &#123;</div><div class="line">        <span class="attr">host</span> : config.mysql_catchfish_debug.host,</div><div class="line">        <span class="attr">port</span> :  config.mysql_catchfish_debug.port,</div><div class="line">        <span class="attr">user</span> :  config.mysql_catchfish_debug.user,</div><div class="line">        <span class="attr">password</span> :  config.mysql_catchfish_debug.password,</div><div class="line">        <span class="attr">database</span> :  config.mysql_catchfish_debug.database</div><div class="line">    &#125;;</div><div class="line">    client = mysql.createConnection(option);</div><div class="line">    client.connect(<span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</div><div class="line">       <span class="keyword">if</span> (err) &#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">'initClient [[mysql db]]error when connecting to db:requestConnectMySqlTime = '</span> + requestConnectMySqlTime + <span class="string">';err = '</span>, err);</div><div class="line">            requestConnectMySqlTime++;</div><div class="line">            setTimeout(initClient, <span class="number">5</span>*<span class="number">1000</span>);<span class="comment">// TODO :  if retry time over 3, need send mail</span></div><div class="line">            callback(<span class="literal">false</span>);</div><div class="line">       &#125;<span class="keyword">else</span> &#123;</div><div class="line">            requestConnectMySqlTime = <span class="number">0</span>;</div><div class="line">            callback(<span class="literal">true</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    client.on(<span class="string">'error'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'initClient db error'</span>, err);</div><div class="line">        <span class="keyword">if</span> (err.code === <span class="string">'PROTOCOL_CONNECTION_LOST'</span>) &#123; <span class="comment">// 如果是连接断开，自动重新连接</span></div><div class="line">            initClient(<span class="function"><span class="keyword">function</span>(<span class="params">result</span>)</span>&#123;</div><div class="line">                <span class="built_in">console</span>.log(<span class="string">'reconnect db result : '</span> + result);</div><div class="line">            &#125;);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">syncPlayerBaseFortuneInfo</span>(<span class="params">client, sync_info, callback</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> values = [</div><div class="line">    [sync_info.user_id, sync_info.coins, sync_info.diamonds, sync_info.exps, sync_info.turrent_level]</div><div class="line">  ];</div><div class="line">  client.query(<span class="string">' INSERT INTO user_fortune_'</span> + sync_info.fortune_id + <span class="string">' (user_id, coins, diamonds, exp, turrent_level) VALUES ? '</span> +</div><div class="line">      <span class="string">' ON DUPLICATE KEY UPDATE coins = VALUES(coins),'</span> +</div><div class="line">      <span class="string">' diamonds = VALUES(diamonds) , exp = VALUES(exp), turrent_level = VALUES(turrent_level)'</span>,</div><div class="line">  	   [values],</div><div class="line">    <span class="function"><span class="keyword">function</span> (<span class="params">err, results</span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span> (err) &#123;</div><div class="line">            callback(<span class="literal">false</span>);</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line">        callback(<span class="literal">true</span>);</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;node.js与mysql交互。 &lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="node.js学习" scheme="http://yoursite.com/tags/node-js%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>二叉树的实现（c++）</title>
-    <link href="http://yoursite.com/2017/01/20/DataStructure_BinaryTree/"/>
-    <id>http://yoursite.com/2017/01/20/DataStructure_BinaryTree/</id>
-    <published>2017-01-20T02:51:40.348Z</published>
-    <updated>2017-01-20T05:06:29.434Z</updated>
+    <link href="http://yoursite.com/2017/01/24/DataStructure_BinaryTree/"/>
+    <id>http://yoursite.com/2017/01/24/DataStructure_BinaryTree/</id>
+    <published>2017-01-24T07:11:45.656Z</published>
+    <updated>2017-01-24T07:11:45.656Z</updated>
     
     <content type="html"><![CDATA[<p><strong>github</strong> : <a href="https://github.com/ckj258/DataStructure/tree/master/%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91" target="_blank" rel="external">https://github.com/ckj258/DataStructure/tree/master/%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91</a><br><a id="more"></a></p>
 <h2 id="二叉树节点定义"><a href="#二叉树节点定义" class="headerlink" title="二叉树节点定义"></a>二叉树节点定义</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">struct</span> BinarySearchTreeNode</div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> key;</div><div class="line">	BinarySearchTreeNode *leftChild;</div><div class="line">	BinarySearchTreeNode *rightChild;</div><div class="line">	BinarySearchTreeNode(<span class="keyword">int</span> tempKey)</div><div class="line">	&#123;</div><div class="line">		key=tempKey;</div><div class="line">		leftChild=<span class="literal">NULL</span>;</div><div class="line">		rightChild=<span class="literal">NULL</span>;</div><div class="line">	&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
@@ -106,7 +106,7 @@
     <link href="http://yoursite.com/2017/01/17/redis_option/"/>
     <id>http://yoursite.com/2017/01/17/redis_option/</id>
     <published>2017-01-17T02:32:49.000Z</published>
-    <updated>2017-01-23T02:46:54.290Z</updated>
+    <updated>2017-01-24T07:11:45.659Z</updated>
     
     <content type="html"><![CDATA[<h2 id="redis配置参数说明"><a href="#redis配置参数说明" class="headerlink" title="redis配置参数说明"></a>redis配置参数说明</h2><p><a id="more"></a>参数说明<br>redis.conf 配置项说明如下：</p>
 <ol>
@@ -162,7 +162,7 @@
     <link href="http://yoursite.com/2017/01/17/node_redis/"/>
     <id>http://yoursite.com/2017/01/17/node_redis/</id>
     <published>2017-01-17T01:55:52.000Z</published>
-    <updated>2017-01-23T02:46:19.371Z</updated>
+    <updated>2017-01-24T07:11:45.657Z</updated>
     
     <content type="html"><![CDATA[<p>REmote DIctionary Server(Redis) 是一个由Salvatore Sanfilippo写的key-value存储系统。<br>Redis是一个开源的使用ANSI C语言编写、遵守BSD协议、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。   </p>
 <a id="more"></a>
@@ -192,7 +192,7 @@
     <link href="http://yoursite.com/2017/01/17/redis_generate/"/>
     <id>http://yoursite.com/2017/01/17/redis_generate/</id>
     <published>2017-01-17T01:55:52.000Z</published>
-    <updated>2017-01-23T02:46:48.804Z</updated>
+    <updated>2017-01-24T07:11:45.658Z</updated>
     
     <content type="html"><![CDATA[<p>REmote DIctionary Server(Redis) 是一个由Salvatore Sanfilippo写的key-value存储系统。<br>Redis是一个开源的使用ANSI C语言编写、遵守BSD协议、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。   </p>
 <a id="more"></a>
@@ -218,7 +218,7 @@
     <link href="http://yoursite.com/2016/12/20/pomelo-chatserver/"/>
     <id>http://yoursite.com/2016/12/20/pomelo-chatserver/</id>
     <published>2016-12-20T08:55:19.000Z</published>
-    <updated>2017-01-23T02:46:32.226Z</updated>
+    <updated>2017-01-24T07:11:45.658Z</updated>
     
     <content type="html"><![CDATA[<p>github : <a href="https://github.com/ckj258/PomeloClient/game-server" target="_blank" rel="external">https://github.com/ckj258/PomeloClient/game-server</a></p>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>pomelo是一个游戏服务器框架，使用很简单。<br>它包括基础开发框架和一系列相关工具和库，可以帮助开发者省去游戏开发中枯燥的重复劳动和底层逻辑工作，<br>让开发者可以更多地去关注游戏的具体逻辑，大大提高开发效率。    </p>
@@ -249,14 +249,14 @@
     <link href="http://yoursite.com/2016/12/13/pomelo-libpomelo/"/>
     <id>http://yoursite.com/2016/12/13/pomelo-libpomelo/</id>
     <published>2016-12-13T06:30:00.000Z</published>
-    <updated>2017-01-23T02:46:42.866Z</updated>
+    <updated>2017-02-06T03:13:55.363Z</updated>
     
     <content type="html"><![CDATA[<p>github : <a href="https://github.com/ckj258/PomeloClient/" target="_blank" rel="external">https://github.com/ckj258/PomeloClient/</a></p>
 <p>Pomelo 是基于 Node.js 的高性能、分布式游戏服务器框架。<br>非常适合用来开发轻量级手游。<br>之前一直在用pomelo-cocos2dx架构，在此记录一下使用心得。  </p>
 <a id="more"></a>
 <h2 id="运行项目"><a href="#运行项目" class="headerlink" title="运行项目"></a>运行项目</h2><h3 id="Client"><a href="#Client" class="headerlink" title="Client"></a>Client</h3><p>coco2dx引擎版本3.10，拷贝引擎文件至根目录编译，运行  </p>
 <h3 id="Server"><a href="#Server" class="headerlink" title="Server"></a>Server</h3><p>cd game-server<br><br>npm install<br><br>pomelo start<br></p>
-<h2 id="类详解"><a href="#类详解" class="headerlink" title="类详解"></a>类详解</h2><h3 id="PomeloSocket"><a href="#PomeloSocket" class="headerlink" title="PomeloSocket"></a>PomeloSocket</h3><p>负责与server的交互<br>主要方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">	void conConnect(const char*ServerIP, int ServerPort	);//建立连接</div><div class="line">	void quit();										  //断开连接</div><div class="line"></div><div class="line">/* ==============================================================================</div><div class="line"> * 功能描述：发送事件,回调函数 typedef void (*pc_notify_cb_t)(const pc_notify_t* req, int rc);  rc表示错误码,无参数返回. 例用于上传游戏数据等等</div><div class="line"> * 创 建 者：ckj</div><div class="line"> * 创建日期：2016年12月13日17:30:49</div><div class="line"> * ==============================================================================*/</div><div class="line">	void sendEvents(const char* params, const char*remote, pc_notify_cb_t event_cb);</div><div class="line">/* ==============================================================================</div><div class="line"> * 功能描述：发送请求,回调函数 typedef void (*pc_request_cb_t)(const pc_request_t* req, int rc, const char* resp);  rc表示错误码,resp为服务器json结构. 例用于登录等需要返回结果的场景  </div><div class="line"> * 创 建 者：ckj</div><div class="line"> * 创建日期：2016年12月13日17:33:53</div><div class="line"> * ==============================================================================*/</div><div class="line">	void sendRequest(const char* params, const char*remote, pc_request_cb_t request_cb);</div></pre></td></tr></table></figure></p>
+<h2 id="类详解"><a href="#类详解" class="headerlink" title="类详解"></a>类详解</h2><h3 id="PomeloSocket"><a href="#PomeloSocket" class="headerlink" title="PomeloSocket"></a>PomeloSocket</h3><p>负责与server的交互<br>主要方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">void conConnect(const char*ServerIP, int ServerPort	);//建立连接</div><div class="line">void quit();										  //断开连接</div><div class="line"></div><div class="line">/* ==============================================================================</div><div class="line"> * 功能描述：发送事件,回调函数 typedef void (*pc_notify_cb_t)(const pc_notify_t* req, int rc);  rc表示错误码,无参数返回. 例用于上传游戏数据等等</div><div class="line"> * 创 建 者：ckj</div><div class="line"> * 创建日期：2016年12月13日17:30:49</div><div class="line"> * ==============================================================================*/</div><div class="line">void sendEvents(const char* params, const char*remote, pc_notify_cb_t event_cb);</div><div class="line"></div><div class="line">/* ==============================================================================</div><div class="line"> * 功能描述：发送请求,回调函数 typedef void (*pc_request_cb_t)(const pc_request_t* req, int rc, const char* resp);  rc表示错误码,resp为服务器json结构. 例用于登录等需要返回结果的场景  </div><div class="line"> * 创 建 者：ckj</div><div class="line"> * 创建日期：2016年12月13日17:33:53</div><div class="line"> * ==============================================================================*/</div><div class="line">void sendRequest(const char* params, const char*remote, pc_request_cb_t request_cb);</div></pre></td></tr></table></figure></p>
 <h3 id="PomeloHandler"><a href="#PomeloHandler" class="headerlink" title="PomeloHandler"></a>PomeloHandler</h3><p>观察者模式中的观察者，负责向游戏中注册监听的对象发放广播<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">void addHandlerListen(PomeloListen* listen);//添加监听listen</div></pre></td></tr></table></figure></p>
 <h3 id="PomeloListen"><a href="#PomeloListen" class="headerlink" title="PomeloListen"></a>PomeloListen</h3><p>观察者模式中的对象，一个纯虚类，负责接收消息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">virtual void handle_event(const char* msgId, const char* msgBody)=0;  //msgId为服务器notify分发的remote</div></pre></td></tr></table></figure></p>
 <h2 id="调用方法"><a href="#调用方法" class="headerlink" title="调用方法"></a>调用方法</h2><p>因为pomelo基于分布式游戏服务器框架，所以进入游戏时最好通过http请求获取TCP连接ip和port<br>然后调用onConnect建立连接</p>
@@ -283,7 +283,7 @@
     <link href="http://yoursite.com/2016/12/07/hello-world/"/>
     <id>http://yoursite.com/2016/12/07/hello-world/</id>
     <published>2016-12-07T03:54:00.000Z</published>
-    <updated>2016-12-08T08:57:42.279Z</updated>
+    <updated>2017-01-24T07:11:45.656Z</updated>
     
     <content type="html"><![CDATA[<p>前前后后折腾了一天，因为网速的关系，反反复复的安装，人生第一篇博客终于诞生。<br>在此感谢 ”沸沸腾“ 提供的教程<a href="http://www.jianshu.com/p/863f3f2d1733" target="_blank" rel="external">http://www.jianshu.com/p/863f3f2d1733</a><br>以及 yilia作者“litten”提供的简约主题</p>
 ]]></content>
