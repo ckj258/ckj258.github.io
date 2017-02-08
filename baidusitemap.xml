@@ -4,6 +4,23 @@
 
     
   <url>
+    <loc>http://yoursite.com/2017/02/08/bitoperation/</loc>
+    <lastmod>2017-02-08T02:48:44.016Z</lastmod>
+    <data>
+        <display>
+        <title>位运算回顾</title>
+        <pubTime>2017-02-08T02:35:11.000Z</pubTime>
+        
+        <tag>c++</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2016/12/13/pomelo-libpomelo/</loc>
     <lastmod>2017-02-06T03:13:55.363Z</lastmod>
     <data>
@@ -106,14 +123,14 @@
 
     
   <url>
-    <loc>http://yoursite.com/2017/01/24/DataStructure_BinaryTree/</loc>
+    <loc>http://yoursite.com/2016/12/07/hello-world/</loc>
     <lastmod>2017-01-24T07:11:45.656Z</lastmod>
     <data>
         <display>
-        <title>二叉树的实现（c++）</title>
-        <pubTime>2017-01-24T07:11:45.656Z</pubTime>
+        <title>Hello World</title>
+        <pubTime>2016-12-07T03:54:00.000Z</pubTime>
         
-        <tag>数据结构</tag>
+        <tag>杂谈</tag>
          
          
            
@@ -140,14 +157,14 @@
 
     
   <url>
-    <loc>http://yoursite.com/2016/12/07/hello-world/</loc>
+    <loc>http://yoursite.com/2017/01/24/DataStructure_BinaryTree/</loc>
     <lastmod>2017-01-24T07:11:45.656Z</lastmod>
     <data>
         <display>
-        <title>Hello World</title>
-        <pubTime>2016-12-07T03:54:00.000Z</pubTime>
+        <title>二叉树的实现（c++）</title>
+        <pubTime>2017-01-24T07:11:45.656Z</pubTime>
         
-        <tag>杂谈</tag>
+        <tag>数据结构</tag>
          
          
            

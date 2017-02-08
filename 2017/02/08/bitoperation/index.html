@@ -6,17 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 杂谈 | Dantel的博客</title>
+  <title>位运算回顾 | Dantel的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="趔趄上岸的青年。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Dantel的博客">
-<meta property="og:url" content="http://yoursite.com/tags/杂谈/index.html">
+  <meta name="description" content="”&amp;amp;“ 按位与如果两个相应的二进制位都为１，则该位的结果值为1；否则为0">
+<meta property="og:type" content="article">
+<meta property="og:title" content="位运算回顾">
+<meta property="og:url" content="http://yoursite.com/2017/02/08/bitoperation/index.html">
 <meta property="og:site_name" content="Dantel的博客">
-<meta property="og:description" content="趔趄上岸的青年。">
+<meta property="og:description" content="”&amp;amp;“ 按位与如果两个相应的二进制位都为１，则该位的结果值为1；否则为0">
+<meta property="og:updated_time" content="2017-02-08T02:48:44.016Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Dantel的博客">
-<meta name="twitter:description" content="趔趄上岸的青年。">
+<meta name="twitter:title" content="位运算回顾">
+<meta name="twitter:description" content="”&amp;amp;“ 按位与如果两个相应的二进制位都为１，则该位的结果值为1；否则为0">
   
     <link rel="alternative" href="/atom.xml" title="Dantel的博客" type="application/atom+xml">
   
@@ -140,54 +141,141 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-bitoperation" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/12/07/hello-world/" class="archive-article-date">
-  	<time datetime="2016-12-07T03:54:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-07</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/07/hello-world/">Hello World</a>
+    <h1 class="article-title" itemprop="name">
+      位运算回顾
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        <a href="/2017/02/08/bitoperation/" class="archive-article-date">
+  	<time datetime="2017-02-08T02:35:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-08</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="”-amp-“-按位与"><a href="#”-amp-“-按位与" class="headerlink" title="”&amp;“ 按位与"></a>”&amp;“ 按位与</h2><p>如果两个相应的二进制位都为１，则该位的结果值为1；否则为0<br><a id="more"></a></p>
+<h2 id="“-”-按位或"><a href="#“-”-按位或" class="headerlink" title="“|” 按位或"></a>“|” 按位或</h2><p>如果两个相应的二进制位只要有一个是1，结果就是1；否则为0。<br> if(n % 2 == 0)  等价于 if((n&amp;1) == 0)  后者运行效率更高</p>
+<h2 id="“-lt-lt-“-左位移"><a href="#“-lt-lt-“-左位移" class="headerlink" title="“&lt;&lt;“ 左位移"></a>“&lt;&lt;“ 左位移</h2><p>向左移一位， 高位丢弃，低位补0<br>n * 2 == (n &lt;&lt; 1)</p>
+<h2 id="“-gt-gt-”-右位移"><a href="#“-gt-gt-”-右位移" class="headerlink" title="“&gt;&gt;” 右位移"></a>“&gt;&gt;” 右位移</h2><p>向右移一位，正数补0，负数补1<br>n&gt;&gt;1 = n / 2  </p>
+<h2 id="异或"><a href="#异或" class="headerlink" title="^ 异或"></a>^ 异或</h2><p>两个相同的数会变成0，反之是1<br>void swap(int &amp;a,int &amp;b)<br>{<br>    a^=b;<br>    b^=a;<br>    a^=b;<br>}</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>赏包辣条吧<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/杂谈/">杂谈</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c++</a></li></ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKElEQVR42u3awY6rMAwF0P7/T/dJs3qLQu916GgaTlYVgpDDwo1jPx7xeP6M/38n4+j+ZJ7HJwYGBsbXMvKlzGBHM5yvoaZiYGDcgJEE2RbfLjd57+F1DAwMjNOFPpdH/vkwMDAwkunOX3x+vb2CgYGB0aags3uSIJ5cuSwXx8DA+ELGrDDwO78/Xt/AwMD484yrEs4krT1/+9J6MDAwtmacLyUJvsmykji5PhsGBsaujLZJ4vx3vqCVg7YX92NgYGzNmAW4fIPYhtH6v2IlTmNgYHwVo23/ap+9auY3IRsDA2NTRtv4NStVJtfzgP7i02BgYGzNyI/pZ5XE2czJcqPOEQwMjC0YebtDHprbg7nkY715CgMD4waMpSniRefX6y0mBgbGzRh5+1feLpZsAWelhcOAi4GBsR1jPdVs8+bZgdrhDBgYGDdj5IBZqfJXa7AYGBgbMfLtXRsK28O4drzY4WJgYGzKGIa5UVFzFo7ffCYMDIytGfljV70sL0K0yTMGBsZ9GHmDRduokQff9ikMDIz7MPJ2hzoUlmH9Tcp6dD8GBsbWjPa4vw2gM/awOQMDA2M7xrMc7aFbm/rO2jgwMDD2ZtTFwuWC5bXvwsDAuA+jDbJtopsXG5YCLgYGxg0Ys5P2PPVNwutso4mBgYFxVUi9KuwerhkDAwOjLD3mz34kz8bAwNiU8eng2DZb1BgMDIytGVcF5RXSrPD5kf8WDAyMv8X4B9f1x2WlFPnoAAAAAElFTkSuQmCC" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-  
-    </div></section>
-  
 
-    
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2017/01/24/node_redis_example_session/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">redis实用之session管理</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+
 
 
           </div>
@@ -210,9 +298,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",

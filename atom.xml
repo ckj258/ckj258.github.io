@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-01-24T07:11:45.657Z</updated>
+  <updated>2017-02-08T02:48:44.016Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>位运算回顾</title>
+    <link href="http://yoursite.com/2017/02/08/bitoperation/"/>
+    <id>http://yoursite.com/2017/02/08/bitoperation/</id>
+    <published>2017-02-08T02:35:11.000Z</published>
+    <updated>2017-02-08T02:48:44.016Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="”-amp-“-按位与"><a href="#”-amp-“-按位与" class="headerlink" title="”&amp;“ 按位与"></a>”&amp;“ 按位与</h2><p>如果两个相应的二进制位都为１，则该位的结果值为1；否则为0<br><a id="more"></a></p>
+<h2 id="“-”-按位或"><a href="#“-”-按位或" class="headerlink" title="“|” 按位或"></a>“|” 按位或</h2><p>如果两个相应的二进制位只要有一个是1，结果就是1；否则为0。<br> if(n % 2 == 0)  等价于 if((n&amp;1) == 0)  后者运行效率更高</p>
+<h2 id="“-lt-lt-“-左位移"><a href="#“-lt-lt-“-左位移" class="headerlink" title="“&lt;&lt;“ 左位移"></a>“&lt;&lt;“ 左位移</h2><p>向左移一位， 高位丢弃，低位补0<br>n * 2 == (n &lt;&lt; 1)</p>
+<h2 id="“-gt-gt-”-右位移"><a href="#“-gt-gt-”-右位移" class="headerlink" title="“&gt;&gt;” 右位移"></a>“&gt;&gt;” 右位移</h2><p>向右移一位，正数补0，负数补1<br>n&gt;&gt;1 = n / 2  </p>
+<h2 id="异或"><a href="#异或" class="headerlink" title="^ 异或"></a>^ 异或</h2><p>两个相同的数会变成0，反之是1<br>void swap(int &amp;a,int &amp;b)<br>{<br>    a^=b;<br>    b^=a;<br>    a^=b;<br>}</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;”-amp-“-按位与&quot;&gt;&lt;a href=&quot;#”-amp-“-按位与&quot; class=&quot;headerlink&quot; title=&quot;”&amp;amp;“ 按位与&quot;&gt;&lt;/a&gt;”&amp;amp;“ 按位与&lt;/h2&gt;&lt;p&gt;如果两个相应的二进制位都为１，则该位的结果值为1；否则为0&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="c++" scheme="http://yoursite.com/tags/c/"/>
+    
+  </entry>
   
   <entry>
     <title>redis实用之session管理</title>
@@ -33,6 +58,31 @@
     <summary type="html">
     
       &lt;p&gt;在游戏服务器里，登录服务器是必不可少的一块&lt;br&gt;运用redis设置带时效的缓存，可以很好的解决session管理的问题。。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="node.js学习" scheme="http://yoursite.com/tags/node-js%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>node调用mysql</title>
+    <link href="http://yoursite.com/2017/01/24/node_mysql/"/>
+    <id>http://yoursite.com/2017/01/24/node_mysql/</id>
+    <published>2017-01-24T07:11:45.656Z</published>
+    <updated>2017-01-24T07:11:45.656Z</updated>
+    
+    <content type="html"><![CDATA[<p>node.js与mysql交互。 </p>
+<a id="more"></a>
+<h2 id="npm安装"><a href="#npm安装" class="headerlink" title="npm安装"></a>npm安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install mysql</div></pre></td></tr></table></figure>
+<h2 id="使用案例"><a href="#使用案例" class="headerlink" title="使用案例"></a>使用案例</h2><h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">initClient</span>(<span class="params">callback</span>) </span>&#123;</div><div class="line">    option = &#123;</div><div class="line">        <span class="attr">host</span> : config.mysql_catchfish_debug.host,</div><div class="line">        <span class="attr">port</span> :  config.mysql_catchfish_debug.port,</div><div class="line">        <span class="attr">user</span> :  config.mysql_catchfish_debug.user,</div><div class="line">        <span class="attr">password</span> :  config.mysql_catchfish_debug.password,</div><div class="line">        <span class="attr">database</span> :  config.mysql_catchfish_debug.database</div><div class="line">    &#125;;</div><div class="line">    client = mysql.createConnection(option);</div><div class="line">    client.connect(<span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</div><div class="line">       <span class="keyword">if</span> (err) &#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">'initClient [[mysql db]]error when connecting to db:requestConnectMySqlTime = '</span> + requestConnectMySqlTime + <span class="string">';err = '</span>, err);</div><div class="line">            requestConnectMySqlTime++;</div><div class="line">            setTimeout(initClient, <span class="number">5</span>*<span class="number">1000</span>);<span class="comment">// TODO :  if retry time over 3, need send mail</span></div><div class="line">            callback(<span class="literal">false</span>);</div><div class="line">       &#125;<span class="keyword">else</span> &#123;</div><div class="line">            requestConnectMySqlTime = <span class="number">0</span>;</div><div class="line">            callback(<span class="literal">true</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    client.on(<span class="string">'error'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'initClient db error'</span>, err);</div><div class="line">        <span class="keyword">if</span> (err.code === <span class="string">'PROTOCOL_CONNECTION_LOST'</span>) &#123; <span class="comment">// 如果是连接断开，自动重新连接</span></div><div class="line">            initClient(<span class="function"><span class="keyword">function</span>(<span class="params">result</span>)</span>&#123;</div><div class="line">                <span class="built_in">console</span>.log(<span class="string">'reconnect db result : '</span> + result);</div><div class="line">            &#125;);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">syncPlayerBaseFortuneInfo</span>(<span class="params">client, sync_info, callback</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> values = [</div><div class="line">    [sync_info.user_id, sync_info.coins, sync_info.diamonds, sync_info.exps, sync_info.turrent_level]</div><div class="line">  ];</div><div class="line">  client.query(<span class="string">' INSERT INTO user_fortune_'</span> + sync_info.fortune_id + <span class="string">' (user_id, coins, diamonds, exp, turrent_level) VALUES ? '</span> +</div><div class="line">      <span class="string">' ON DUPLICATE KEY UPDATE coins = VALUES(coins),'</span> +</div><div class="line">      <span class="string">' diamonds = VALUES(diamonds) , exp = VALUES(exp), turrent_level = VALUES(turrent_level)'</span>,</div><div class="line">  	   [values],</div><div class="line">    <span class="function"><span class="keyword">function</span> (<span class="params">err, results</span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span> (err) &#123;</div><div class="line">            callback(<span class="literal">false</span>);</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line">        callback(<span class="literal">true</span>);</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;node.js与mysql交互。 &lt;/p&gt;
     
     </summary>
     
@@ -73,31 +123,6 @@
     
     
       <category term="数据结构" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>node调用mysql</title>
-    <link href="http://yoursite.com/2017/01/24/node_mysql/"/>
-    <id>http://yoursite.com/2017/01/24/node_mysql/</id>
-    <published>2017-01-24T07:11:45.656Z</published>
-    <updated>2017-01-24T07:11:45.656Z</updated>
-    
-    <content type="html"><![CDATA[<p>node.js与mysql交互。 </p>
-<a id="more"></a>
-<h2 id="npm安装"><a href="#npm安装" class="headerlink" title="npm安装"></a>npm安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install mysql</div></pre></td></tr></table></figure>
-<h2 id="使用案例"><a href="#使用案例" class="headerlink" title="使用案例"></a>使用案例</h2><h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">initClient</span>(<span class="params">callback</span>) </span>&#123;</div><div class="line">    option = &#123;</div><div class="line">        <span class="attr">host</span> : config.mysql_catchfish_debug.host,</div><div class="line">        <span class="attr">port</span> :  config.mysql_catchfish_debug.port,</div><div class="line">        <span class="attr">user</span> :  config.mysql_catchfish_debug.user,</div><div class="line">        <span class="attr">password</span> :  config.mysql_catchfish_debug.password,</div><div class="line">        <span class="attr">database</span> :  config.mysql_catchfish_debug.database</div><div class="line">    &#125;;</div><div class="line">    client = mysql.createConnection(option);</div><div class="line">    client.connect(<span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</div><div class="line">       <span class="keyword">if</span> (err) &#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">'initClient [[mysql db]]error when connecting to db:requestConnectMySqlTime = '</span> + requestConnectMySqlTime + <span class="string">';err = '</span>, err);</div><div class="line">            requestConnectMySqlTime++;</div><div class="line">            setTimeout(initClient, <span class="number">5</span>*<span class="number">1000</span>);<span class="comment">// TODO :  if retry time over 3, need send mail</span></div><div class="line">            callback(<span class="literal">false</span>);</div><div class="line">       &#125;<span class="keyword">else</span> &#123;</div><div class="line">            requestConnectMySqlTime = <span class="number">0</span>;</div><div class="line">            callback(<span class="literal">true</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    client.on(<span class="string">'error'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'initClient db error'</span>, err);</div><div class="line">        <span class="keyword">if</span> (err.code === <span class="string">'PROTOCOL_CONNECTION_LOST'</span>) &#123; <span class="comment">// 如果是连接断开，自动重新连接</span></div><div class="line">            initClient(<span class="function"><span class="keyword">function</span>(<span class="params">result</span>)</span>&#123;</div><div class="line">                <span class="built_in">console</span>.log(<span class="string">'reconnect db result : '</span> + result);</div><div class="line">            &#125;);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">syncPlayerBaseFortuneInfo</span>(<span class="params">client, sync_info, callback</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> values = [</div><div class="line">    [sync_info.user_id, sync_info.coins, sync_info.diamonds, sync_info.exps, sync_info.turrent_level]</div><div class="line">  ];</div><div class="line">  client.query(<span class="string">' INSERT INTO user_fortune_'</span> + sync_info.fortune_id + <span class="string">' (user_id, coins, diamonds, exp, turrent_level) VALUES ? '</span> +</div><div class="line">      <span class="string">' ON DUPLICATE KEY UPDATE coins = VALUES(coins),'</span> +</div><div class="line">      <span class="string">' diamonds = VALUES(diamonds) , exp = VALUES(exp), turrent_level = VALUES(turrent_level)'</span>,</div><div class="line">  	   [values],</div><div class="line">    <span class="function"><span class="keyword">function</span> (<span class="params">err, results</span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span> (err) &#123;</div><div class="line">            callback(<span class="literal">false</span>);</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line">        callback(<span class="literal">true</span>);</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;node.js与mysql交互。 &lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="node.js学习" scheme="http://yoursite.com/tags/node-js%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
