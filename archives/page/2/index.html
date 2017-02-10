@@ -6,18 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>node调用mysql | Dantel的博客</title>
+  <title>Archives | Dantel的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="node.js与mysql交互。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="node调用mysql">
-<meta property="og:url" content="http://yoursite.com/2017/01/24/node_mysql/index.html">
+  <meta name="description" content="趔趄上岸的青年。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Dantel的博客">
+<meta property="og:url" content="http://yoursite.com/archives/page/2/index.html">
 <meta property="og:site_name" content="Dantel的博客">
-<meta property="og:description" content="node.js与mysql交互。">
-<meta property="og:updated_time" content="2017-01-24T07:11:45.656Z">
+<meta property="og:description" content="趔趄上岸的青年。">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="node调用mysql">
-<meta name="twitter:description" content="node.js与mysql交互。">
+<meta name="twitter:title" content="Dantel的博客">
+<meta name="twitter:description" content="趔趄上岸的青年。">
   
     <link rel="alternative" href="/atom.xml" title="Dantel的博客" type="application/atom+xml">
   
@@ -141,150 +140,58 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-node_mysql" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      node调用mysql
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2016" class="archive-year">2016</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2016/12/07/hello-world/" class="archive-article-date">
+  	<time datetime="2016-12-07T03:54:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-07</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2016/12/07/hello-world/">Hello World</a>
     </h1>
   
 
-        <a href="/2017/01/24/node_mysql/" class="archive-article-date">
-  	<time datetime="2017-01-24T07:11:45.656Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-24</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>node.js与mysql交互。 </p>
-<a id="more"></a>
-<h2 id="npm安装"><a href="#npm安装" class="headerlink" title="npm安装"></a>npm安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install mysql</div></pre></td></tr></table></figure>
-<h2 id="使用案例"><a href="#使用案例" class="headerlink" title="使用案例"></a>使用案例</h2><h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">initClient</span>(<span class="params">callback</span>) </span>&#123;</div><div class="line">    option = &#123;</div><div class="line">        <span class="attr">host</span> : config.mysql_catchfish_debug.host,</div><div class="line">        <span class="attr">port</span> :  config.mysql_catchfish_debug.port,</div><div class="line">        <span class="attr">user</span> :  config.mysql_catchfish_debug.user,</div><div class="line">        <span class="attr">password</span> :  config.mysql_catchfish_debug.password,</div><div class="line">        <span class="attr">database</span> :  config.mysql_catchfish_debug.database</div><div class="line">    &#125;;</div><div class="line">    client = mysql.createConnection(option);</div><div class="line">    client.connect(<span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</div><div class="line">       <span class="keyword">if</span> (err) &#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">'initClient [[mysql db]]error when connecting to db:requestConnectMySqlTime = '</span> + requestConnectMySqlTime + <span class="string">';err = '</span>, err);</div><div class="line">            requestConnectMySqlTime++;</div><div class="line">            setTimeout(initClient, <span class="number">5</span>*<span class="number">1000</span>);<span class="comment">// TODO :  if retry time over 3, need send mail</span></div><div class="line">            callback(<span class="literal">false</span>);</div><div class="line">       &#125;<span class="keyword">else</span> &#123;</div><div class="line">            requestConnectMySqlTime = <span class="number">0</span>;</div><div class="line">            callback(<span class="literal">true</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    client.on(<span class="string">'error'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'initClient db error'</span>, err);</div><div class="line">        <span class="keyword">if</span> (err.code === <span class="string">'PROTOCOL_CONNECTION_LOST'</span>) &#123; <span class="comment">// 如果是连接断开，自动重新连接</span></div><div class="line">            initClient(<span class="function"><span class="keyword">function</span>(<span class="params">result</span>)</span>&#123;</div><div class="line">                <span class="built_in">console</span>.log(<span class="string">'reconnect db result : '</span> + result);</div><div class="line">            &#125;);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">syncPlayerBaseFortuneInfo</span>(<span class="params">client, sync_info, callback</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> values = [</div><div class="line">    [sync_info.user_id, sync_info.coins, sync_info.diamonds, sync_info.exps, sync_info.turrent_level]</div><div class="line">  ];</div><div class="line">  client.query(<span class="string">' INSERT INTO user_fortune_'</span> + sync_info.fortune_id + <span class="string">' (user_id, coins, diamonds, exp, turrent_level) VALUES ? '</span> +</div><div class="line">      <span class="string">' ON DUPLICATE KEY UPDATE coins = VALUES(coins),'</span> +</div><div class="line">      <span class="string">' diamonds = VALUES(diamonds) , exp = VALUES(exp), turrent_level = VALUES(turrent_level)'</span>,</div><div class="line">  	   [values],</div><div class="line">    <span class="function"><span class="keyword">function</span> (<span class="params">err, results</span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span> (err) &#123;</div><div class="line">            callback(<span class="literal">false</span>);</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line">        callback(<span class="literal">true</span>);</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>赏包辣条吧<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node-js学习/">node.js学习</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/杂谈/">杂谈</a></li></ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABxElEQVR42u3aQY4CMQwEQP7/aVba22pFpm2HMEiVE0JDprhYcTuPR7yev+vV5/k3mxcuLu6Y+1yu/8Tqb9fo6j64uLgnuUnxutho+Wdy+oUNFxf3Ztxou9aeuLi438tNClC1zOHi4t6ZmzQ/SbSRHIPWu23r1XBxcQfceWA6/3w038XFxR1MJSYhSO/5i7fj4uIe4a4bmLwdSorU+ps8QsXFxX03N990MkDN49SLgoiLi3uEmz9UPfok8cqkCOLi4p7kzo8y1dFLNZDFxcU9w602KrsuYTRHtri4uG/mTg4ieWs0mZJsOzfh4uKO98nL1rxN2jAfxsXF3cqtvnjvtYy87flzxMHFxT3OzSOMvNpMrm/i4uLegZtfzshfU41iX4YyuLi4R7iT0nORwra4SZnDxcV9N3dvvtJ7ch2g4OLifoqbDFarF7aiClocseDi4p7k5mvSwPSOU9EkFhcXdyu3N3btjUZ6M9PmxBgXF3fM7RWvfKySFMG8HcLFxT3JzY8j1UNSLzoppy+4uLgf4lZjjiQiSQoZLi7u/bmTq5mjww0uLu5xbmHYWRyNTP7SKBbBxcUdcOcXJpKXVXG4uLgf4v4AU+0P9plGPY4AAAAASUVORK5CYII=" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2017/01/24/DataStructure_BinaryTree/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          二叉树的实现（c++）
-        
-      </div>
-    </a>
   
   
-    <a href="/2017/01/17/redis_option/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">redis配置参数说明</div>
-      <i class="icon-circle-right"></i>
-    </a>
+    </div></section>
   
-</nav>
 
-
-
-
-
-
-
+    
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/archives/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
+    </nav>
+  
 
 
           </div>
@@ -307,8 +214,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
