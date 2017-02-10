@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-01-24T07:11:45.657Z</updated>
+  <updated>2017-02-10T05:37:37.101Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,55 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Find All Duplicates in an Array</title>
+    <link href="http://yoursite.com/2017/02/10/leetcode_1/"/>
+    <id>http://yoursite.com/2017/02/10/leetcode_1/</id>
+    <published>2017-02-10T05:28:00.000Z</published>
+    <updated>2017-02-10T05:37:37.101Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given an array of integers, 1 ≤ a[i] ≤ n (n = size of array), some elements appear twice and others appear once.<br>Find all the elements that appear twice in this array.<br>Could you do it without extra space and in O(n) runtime?<br><a id="more"></a></p>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example:"></a>Example:</h3><p>Input:<br>[4,3,2,7,8,2,3,1]</p>
+<p>Output:<br>[2,3]</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">vector&lt;int&gt; findDuplicates(vector&lt;int&gt;&amp; nums) &#123;</div><div class="line">	if (nums.empty()) return&#123;&#125;;</div><div class="line">	vector&lt;int&gt; res;</div><div class="line">	int n = nums.size();</div><div class="line">	for (int i = 0; i &lt; n; i++)</div><div class="line">		nums[i] -= 1;       //for indexing flexibility</div><div class="line"></div><div class="line">	int i = 0;</div><div class="line">	while (i &lt; n) &#123;</div><div class="line">		if (nums[i] != nums[nums[i]])</div><div class="line">			swap(nums[i], nums[nums[i]]);   //swap elements to their respective indexes.</div><div class="line">		else</div><div class="line">			i++;</div><div class="line">	&#125;</div><div class="line">	for (int i = 0; i &lt; n; i++) &#123;</div><div class="line">		if (nums[i] != i)</div><div class="line">			res.push_back(nums[i] + 1);     //get the elements which are at some other indexes (as they are occuring twice)</div><div class="line">	&#125;</div><div class="line">	return res;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Description&quot;&gt;&lt;a href=&quot;#Description&quot; class=&quot;headerlink&quot; title=&quot;Description&quot;&gt;&lt;/a&gt;Description&lt;/h2&gt;&lt;p&gt;Given an array of integers, 1 ≤ a[i] ≤ n (n = size of array), some elements appear twice and others appear once.&lt;br&gt;Find all the elements that appear twice in this array.&lt;br&gt;Could you do it without extra space and in O(n) runtime?&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="leetcode" scheme="http://yoursite.com/tags/leetcode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>位运算回顾</title>
+    <link href="http://yoursite.com/2017/02/08/bitoperation/"/>
+    <id>http://yoursite.com/2017/02/08/bitoperation/</id>
+    <published>2017-02-08T02:35:11.000Z</published>
+    <updated>2017-02-08T02:48:44.016Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="”-amp-“-按位与"><a href="#”-amp-“-按位与" class="headerlink" title="”&amp;“ 按位与"></a>”&amp;“ 按位与</h2><p>如果两个相应的二进制位都为１，则该位的结果值为1；否则为0<br><a id="more"></a></p>
+<h2 id="“-”-按位或"><a href="#“-”-按位或" class="headerlink" title="“|” 按位或"></a>“|” 按位或</h2><p>如果两个相应的二进制位只要有一个是1，结果就是1；否则为0。<br> if(n % 2 == 0)  等价于 if((n&amp;1) == 0)  后者运行效率更高</p>
+<h2 id="“-lt-lt-“-左位移"><a href="#“-lt-lt-“-左位移" class="headerlink" title="“&lt;&lt;“ 左位移"></a>“&lt;&lt;“ 左位移</h2><p>向左移一位， 高位丢弃，低位补0<br>n * 2 == (n &lt;&lt; 1)</p>
+<h2 id="“-gt-gt-”-右位移"><a href="#“-gt-gt-”-右位移" class="headerlink" title="“&gt;&gt;” 右位移"></a>“&gt;&gt;” 右位移</h2><p>向右移一位，正数补0，负数补1<br>n&gt;&gt;1 = n / 2  </p>
+<h2 id="异或"><a href="#异或" class="headerlink" title="^ 异或"></a>^ 异或</h2><p>两个相同的数会变成0，反之是1<br>void swap(int &amp;a,int &amp;b)<br>{<br>    a^=b;<br>    b^=a;<br>    a^=b;<br>}</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;”-amp-“-按位与&quot;&gt;&lt;a href=&quot;#”-amp-“-按位与&quot; class=&quot;headerlink&quot; title=&quot;”&amp;amp;“ 按位与&quot;&gt;&lt;/a&gt;”&amp;amp;“ 按位与&lt;/h2&gt;&lt;p&gt;如果两个相应的二进制位都为１，则该位的结果值为1；否则为0&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="c++" scheme="http://yoursite.com/tags/c/"/>
+    
+  </entry>
   
   <entry>
     <title>redis实用之session管理</title>
@@ -158,6 +207,32 @@
   </entry>
   
   <entry>
+    <title>redis的安装与部署</title>
+    <link href="http://yoursite.com/2017/01/17/redis_generate/"/>
+    <id>http://yoursite.com/2017/01/17/redis_generate/</id>
+    <published>2017-01-17T01:55:52.000Z</published>
+    <updated>2017-01-24T07:11:45.658Z</updated>
+    
+    <content type="html"><![CDATA[<p>REmote DIctionary Server(Redis) 是一个由Salvatore Sanfilippo写的key-value存储系统。<br>Redis是一个开源的使用ANSI C语言编写、遵守BSD协议、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。   </p>
+<a id="more"></a>
+<h2 id="运行redis"><a href="#运行redis" class="headerlink" title="运行redis"></a>运行redis</h2><h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p>下载地址 ：<a href="https://redis.io/" target="_blank" rel="external">https://redis.io/</a><br>Redis 支持 32 位和 64 位。<br>这个需要根据你系统平台的实际情况选择，这里我们下载 Redis-x64-xxx.zip,解压后，将文件夹重新命名为 redis。        </p>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>Redis 的配置文件位于 Redis 安装目录下，文件名为 redis.conf。<br>参数说明 : <a href="https://ckj258.github.io/2017/01/17/redis_option/" target="_blank" rel="external">https://ckj258.github.io/2017/01/17/redis_option/</a>    </p>
+<h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><p>打开一个 cmd 窗口 使用cd命令切换目录/redis 运行 redis-server redis.conf。<br><img src="/assets/image/redis_running.png" alt="">   </p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>这时候另启一个cmd窗口，原来的不要关闭，不然就无法访问服务端了。<br>切换到redis目录下运行  redis-cli -h host -p port -a password(redis-cli -h 127.0.0.1 -p 6379)。<br>设置键值对 set name Dantel<br>取出键值对 get name<br><img src="/assets/image/redis_running2.png" alt="">   </p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;REmote DIctionary Server(Redis) 是一个由Salvatore Sanfilippo写的key-value存储系统。&lt;br&gt;Redis是一个开源的使用ANSI C语言编写、遵守BSD协议、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。   &lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="node.js学习" scheme="http://yoursite.com/tags/node-js%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>node调用redis</title>
     <link href="http://yoursite.com/2017/01/17/node_redis/"/>
     <id>http://yoursite.com/2017/01/17/node_redis/</id>
@@ -174,32 +249,6 @@
 <h3 id="delVaule"><a href="#delVaule" class="headerlink" title="delVaule"></a>delVaule</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">del</span>(<span class="params">key</span>) </span>&#123;</div><div class="line">	client.del(key);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="test"><a href="#test" class="headerlink" title="test"></a>test</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">init();</div><div class="line">setVaule(&quot;name&quot;,&quot;Dantel&quot;);</div><div class="line">getVaule(&quot;name&quot;,function(err,redis_result)</div><div class="line">&#123;	</div><div class="line">	if(!error)</div><div class="line">	&#123;</div><div class="line">		console.log(redis_result);</div><div class="line">	&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <h3 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h3><p><img src="/assets/image/node_redis_1.png" alt="">  </p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;REmote DIctionary Server(Redis) 是一个由Salvatore Sanfilippo写的key-value存储系统。&lt;br&gt;Redis是一个开源的使用ANSI C语言编写、遵守BSD协议、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。   &lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="node.js学习" scheme="http://yoursite.com/tags/node-js%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>redis的安装与部署</title>
-    <link href="http://yoursite.com/2017/01/17/redis_generate/"/>
-    <id>http://yoursite.com/2017/01/17/redis_generate/</id>
-    <published>2017-01-17T01:55:52.000Z</published>
-    <updated>2017-01-24T07:11:45.658Z</updated>
-    
-    <content type="html"><![CDATA[<p>REmote DIctionary Server(Redis) 是一个由Salvatore Sanfilippo写的key-value存储系统。<br>Redis是一个开源的使用ANSI C语言编写、遵守BSD协议、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。   </p>
-<a id="more"></a>
-<h2 id="运行redis"><a href="#运行redis" class="headerlink" title="运行redis"></a>运行redis</h2><h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p>下载地址 ：<a href="https://redis.io/" target="_blank" rel="external">https://redis.io/</a><br>Redis 支持 32 位和 64 位。<br>这个需要根据你系统平台的实际情况选择，这里我们下载 Redis-x64-xxx.zip,解压后，将文件夹重新命名为 redis。        </p>
-<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>Redis 的配置文件位于 Redis 安装目录下，文件名为 redis.conf。<br>参数说明 : <a href="https://ckj258.github.io/2017/01/17/redis_option/" target="_blank" rel="external">https://ckj258.github.io/2017/01/17/redis_option/</a>    </p>
-<h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><p>打开一个 cmd 窗口 使用cd命令切换目录/redis 运行 redis-server redis.conf。<br><img src="/assets/image/redis_running.png" alt="">   </p>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>这时候另启一个cmd窗口，原来的不要关闭，不然就无法访问服务端了。<br>切换到redis目录下运行  redis-cli -h host -p port -a password(redis-cli -h 127.0.0.1 -p 6379)。<br>设置键值对 set name Dantel<br>取出键值对 get name<br><img src="/assets/image/redis_running2.png" alt="">   </p>
 ]]></content>
     
     <summary type="html">
