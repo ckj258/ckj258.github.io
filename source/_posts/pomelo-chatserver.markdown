@@ -34,7 +34,7 @@ pomelo是一个游戏服务器框架，使用很简单。
 app.js中声明了"connector","gate","chat"服务器		
 服务器配置信息在config目录下，servers.json配置具体的应用服务器信息。		
 在配置文件中，分为development和production两种环境，表示开发环境和产品环境		
-```
+```  javascript
 app.configure('production|development', 'connector', function(){
 	app.set('connectorConfig',
 		{
@@ -67,7 +67,7 @@ app.configure('production|development', function() {
 ../servers/chat目录下包含hander和remote两个文件夹，
 其中hander下主要存放监听器，负责接收客户端发送请求做相应处理
 
-```
+```  javascript
 handler.send = function(msg, session, next) {
 	var rid = session.get('rid');
 	var username = session.uid.split('*')[0];

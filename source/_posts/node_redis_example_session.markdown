@@ -43,7 +43,7 @@ if(!err)
 ```
 
 ### 判断用户是否登录
-```
+```  javascript
 /**
  * 判断用户是否登录
  */
@@ -66,7 +66,7 @@ function isLogin(session_id, callback) {
 ```
 
 ### 获取一个会话ID
-```
+```  javascript
 /**
  * 获取一个会话ID
  */
@@ -80,7 +80,7 @@ function getNewSessionId() {
 ```
 
 ### 调用示例
-```
+```  javascript
 function login(user_id, passwords, callback) {
 
 		user_db.isUserIdExit(dbmanager.getClientS(), user_id, passwords,function(errorcode, result) {

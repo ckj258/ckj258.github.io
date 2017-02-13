@@ -27,10 +27,12 @@ $RECYCLE.BIN/
 # =========================
 
 .DS_Store
+.npmignore
 .AppleDouble
 .LSOverride
 .deploy_git/
 node_modules/
+public/
 # Thumbnails
 ._*
 

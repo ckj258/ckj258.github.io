@@ -73,7 +73,7 @@ function del(key) {
 
 
 ###	 test
-```
+```  javascript
 init();
 setVaule("name","Dantel");
 getVaule("name",function(err,redis_result)

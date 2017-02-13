@@ -14,6 +14,8 @@ Find all the elements that appear twice in this array.
 Could you do it without extra space and in O(n) runtime?  
 <!-- more -->
 
+leetcode : https://leetcode.com/problems/find-all-duplicates-in-an-array/
+
 ###  Example:
 Input:  
 [4,3,2,7,8,2,3,1]
@@ -23,7 +25,7 @@ Output:
 
 	
 ##  Solution	
-```
+``` cpp
 vector<int> findDuplicates(vector<int>& nums) {
 	if (nums.empty()) return{};
 	vector<int> res;

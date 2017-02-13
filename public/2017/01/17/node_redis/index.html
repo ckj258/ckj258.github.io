@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Dantel的博客">
 <meta property="og:description" content="REmote DIctionary Server(Redis) 是一个由Salvatore Sanfilippo写的key-value存储系统。Redis是一个开源的使用ANSI C语言编写、遵守BSD协议、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。">
 <meta property="og:image" content="http://yoursite.com/assets/image/node_redis_1.png">
-<meta property="og:updated_time" content="2017-01-24T07:11:45.657Z">
+<meta property="og:updated_time" content="2017-02-13T02:26:26.337Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="node调用redis">
 <meta name="twitter:description" content="REmote DIctionary Server(Redis) 是一个由Salvatore Sanfilippo写的key-value存储系统。Redis是一个开源的使用ANSI C语言编写、遵守BSD协议、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。">
@@ -169,7 +169,7 @@
 <h3 id="setValueWithExpire"><a href="#setValueWithExpire" class="headerlink" title="setValueWithExpire"></a>setValueWithExpire</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">setValueWithExpire</span>(<span class="params">key, values</span>) </span>&#123;</div><div class="line">	client.set(key, values);</div><div class="line">	client.expire(key, expire);	<span class="comment">// 单位秒</span></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="getVaule"><a href="#getVaule" class="headerlink" title="getVaule"></a>getVaule</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getVaule</span>(<span class="params">key, callback </span>) </span>&#123;</div><div class="line">	client.get(key, <span class="function"><span class="keyword">function</span>(<span class="params">err, redis_result</span>) </span>&#123;</div><div class="line">		callback(err, redis_result);</div><div class="line">	&#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="delVaule"><a href="#delVaule" class="headerlink" title="delVaule"></a>delVaule</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">del</span>(<span class="params">key</span>) </span>&#123;</div><div class="line">	client.del(key);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="test"><a href="#test" class="headerlink" title="test"></a>test</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">init();</div><div class="line">setVaule(&quot;name&quot;,&quot;Dantel&quot;);</div><div class="line">getVaule(&quot;name&quot;,function(err,redis_result)</div><div class="line">&#123;	</div><div class="line">	if(!error)</div><div class="line">	&#123;</div><div class="line">		console.log(redis_result);</div><div class="line">	&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="test"><a href="#test" class="headerlink" title="test"></a>test</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">init();</div><div class="line">setVaule(<span class="string">"name"</span>,<span class="string">"Dantel"</span>);</div><div class="line">getVaule(<span class="string">"name"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err,redis_result</span>)</span></div><div class="line">&#123;	</div><div class="line">	<span class="keyword">if</span>(!error)</div><div class="line">	&#123;</div><div class="line">		<span class="built_in">console</span>.log(redis_result);</div><div class="line">	&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <h3 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h3><p><img src="/assets/image/node_redis_1.png" alt="">  </p>
 
       
@@ -269,18 +269,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/01/17/redis_generate/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/01/17/redis_option/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          redis的安装与部署
+          redis配置参数说明
         
       </div>
     </a>
   
   
-    <a href="/2016/12/20/pomelo-chatserver/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">pomelo学习入门笔记</div>
+    <a href="/2017/01/17/redis_generate/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">redis的安装与部署</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -349,10 +349,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">杂谈</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)">c++</a>
               </li>
              
@@ -366,6 +362,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)">pomelo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">杂谈</a>
               </li>
             
             <div class="clearfix"></div>

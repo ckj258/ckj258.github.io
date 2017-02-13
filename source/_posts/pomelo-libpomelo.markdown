@@ -33,7 +33,7 @@ pomelo start</br>
 ### PomeloSocket
 负责与server的交互
 主要方法
-```
+```  cpp
 void conConnect(const char*ServerIP, int ServerPort	);//建立连接
 void quit();										  //断开连接
 
@@ -55,7 +55,7 @@ void sendRequest(const char* params, const char*remote, pc_request_cb_t request_
 
 ### PomeloHandler
 观察者模式中的观察者，负责向游戏中注册监听的对象发放广播
-```
+```  cpp
 	void addHandlerListen(PomeloListen* listen);//添加监听listen
 ```
 ### PomeloListen
