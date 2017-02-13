@@ -6,17 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2017 | Dantel的博客</title>
+  <title>Find All Duplicates in an Array | Dantel的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="趔趄上岸的青年。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Dantel的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2017/index.html">
+  <meta name="description" content="DescriptionGiven an array of integers, 1 ≤ a[i] ≤ n (n = size of array), some elements appear twice and others appear once.Find all the elements that appear twice in this array.Could you do it without">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Find All Duplicates in an Array">
+<meta property="og:url" content="http://yoursite.com/2017/02/10/leetcode_1_FindAllDuplicatesInAnArray/index.html">
 <meta property="og:site_name" content="Dantel的博客">
-<meta property="og:description" content="趔趄上岸的青年。">
+<meta property="og:description" content="DescriptionGiven an array of integers, 1 ≤ a[i] ≤ n (n = size of array), some elements appear twice and others appear once.Find all the elements that appear twice in this array.Could you do it without">
+<meta property="og:updated_time" content="2017-02-13T02:26:01.888Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Dantel的博客">
-<meta name="twitter:description" content="趔趄上岸的青年。">
+<meta name="twitter:title" content="Find All Duplicates in an Array">
+<meta name="twitter:description" content="DescriptionGiven an array of integers, 1 ≤ a[i] ≤ n (n = size of array), some elements appear twice and others appear once.Find all the elements that appear twice in this array.Could you do it without">
   
     <link rel="alternative" href="/atom.xml" title="Dantel的博客" type="application/atom+xml">
   
@@ -140,310 +141,150 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-leetcode_1_FindAllDuplicatesInAnArray" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/13/leetcode_2_SudokuSolver/" class="archive-article-date">
-  	<time datetime="2017-02-13T02:21:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-13</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/13/leetcode_2_SudokuSolver/">Sudoku Solver</a>
+    <h1 class="article-title" itemprop="name">
+      Find All Duplicates in an Array
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/10/leetcode_1_FindAllDuplicatesInAnArray/" class="archive-article-date">
+        <a href="/2017/02/10/leetcode_1_FindAllDuplicatesInAnArray/" class="archive-article-date">
   	<time datetime="2017-02-10T05:28:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-10</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/10/leetcode_1_FindAllDuplicatesInAnArray/">Find All Duplicates in an Array</a>
-    </h1>
-  
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given an array of integers, 1 ≤ a[i] ≤ n (n = size of array), some elements appear twice and others appear once.<br>Find all the elements that appear twice in this array.<br>Could you do it without extra space and in O(n) runtime?<br><a id="more"></a></p>
+<p>leetcode : <a href="https://leetcode.com/problems/find-all-duplicates-in-an-array/" target="_blank" rel="external">https://leetcode.com/problems/find-all-duplicates-in-an-array/</a></p>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example:"></a>Example:</h3><p>Input:<br>[4,3,2,7,8,2,3,1]</p>
+<p>Output:<br>[2,3]</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; findDuplicates(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums) &#123;</div><div class="line">	<span class="keyword">if</span> (nums.empty()) <span class="keyword">return</span>&#123;&#125;;</div><div class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; res;</div><div class="line">	<span class="keyword">int</span> n = nums.size();</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</div><div class="line">		nums[i] -= <span class="number">1</span>;       <span class="comment">//for indexing flexibility</span></div><div class="line"></div><div class="line">	<span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line">	<span class="keyword">while</span> (i &lt; n) &#123;</div><div class="line">		<span class="keyword">if</span> (nums[i] != nums[nums[i]])</div><div class="line">			swap(nums[i], nums[nums[i]]);   <span class="comment">//swap elements to their respective indexes.</span></div><div class="line">		<span class="keyword">else</span></div><div class="line">			i++;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</div><div class="line">		<span class="keyword">if</span> (nums[i] != i)</div><div class="line">			res.push_back(nums[i] + <span class="number">1</span>);     <span class="comment">//get the elements which are at some other indexes (as they are occuring twice)</span></div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> res;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>赏包辣条吧<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACr0lEQVR42u3ay27jQAwEQP//T2eBvWYtd5MabQKUTkb8mCkdNEyTr1d8ff293r3+fuXffffJ5PO3XXh4eHijrV9vNPnpa+RmV/lt/ce6eHh4eMd4yWHQbnq2xfzd6z3j4eHh/QResvW8sM4PEjw8PLzfy8vjg+tNt9/Cw8PD+5m8tsBt49c23p0V3Hh4eHjP8PYNsOdfP9rfw8PDw4uPhCRCvS5t89I5OYTq3eLh4eEd4OXDT7PCOm+ebcruD8cGHh4e3jHe7F/99pDYDBMMw2U8PDy8A7x8QKoNCJKSOh9Q2DTq8PDw8O7l5Zu4a3OzQYTh3/Hw8PBu5bWBQtt1mt2yTVyySlnw8PDwYl7yz3872NRGrnnUW7yLh4eHd4zXhhH5Ypt05IZwGQ8PD+8AL1ly86Ozkr39THRc4eHh4R3j3RUK5GV3PqpVDFrh4eHhHePNWvuzh3h7a5J18fDw8P4Xbz/YVJw/i2g4uQV4eHh4p3ntwm2hnDz6Z9cszsDDw8Pb8/JmfNsqm42Z5mtFjTo8PDy8R3ibuGFzPOTvFrcVDw8P7xivbXdtBgvujTw+rI6Hh4d3gJc3otpm1eyYyYvpqKTGw8PDO8BrI4PZuMAm/N0cM3h4eHinedebm8W4bWzxGl1vfwEPDw/vGC9pgN07XjALc+uIGQ8PD+8Abx8ftLHCvq1VHy14eHh4t/I2D9w2aLguqdvDKdoVHh4e3iO8pBnffqb91qwB9mEyAg8PD+8mXhsZzILatsU1nIDYXHh4eHglb/bITlr77Xbz0KEYU8DDw8M7xmuHqNrttlFvG0ZEKTUeHh7e47zoQRww2rZZuzc8PDy838Jrg9RNkV2U43h4eHjHeG3T63oUoL0deQbbHjB4eHh4J3htAyxZPh+32hfuN/f38PDw8K6uPz1LSt8VzLQTAAAAAElFTkSuQmCC" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/08/bitoperation/" class="archive-article-date">
-  	<time datetime="2017-02-08T02:35:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/08/bitoperation/">位运算回顾</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c++</a></li></ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/01/24/node_redis_example_session/" class="archive-article-date">
-  	<time datetime="2017-01-24T07:11:45.657Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-24</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/01/24/node_redis_example_session/">redis实用之session管理</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node-js学习/">node.js学习</a></li></ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/01/24/DataStructure_BinaryTree/" class="archive-article-date">
-  	<time datetime="2017-01-24T07:11:45.656Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/01/24/DataStructure_BinaryTree/">二叉树的实现（c++）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/01/24/node_mysql/" class="archive-article-date">
-  	<time datetime="2017-01-24T07:11:45.656Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/01/24/node_mysql/">node调用mysql</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node-js学习/">node.js学习</a></li></ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/01/17/redis_option/" class="archive-article-date">
-  	<time datetime="2017-01-17T02:32:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/01/17/redis_option/">redis配置参数说明</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node-js学习/">node.js学习</a></li></ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/01/17/node_redis/" class="archive-article-date">
-  	<time datetime="2017-01-17T01:55:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/01/17/node_redis/">node调用redis</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node-js学习/">node.js学习</a></li></ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/01/17/redis_generate/" class="archive-article-date">
-  	<time datetime="2017-01-17T01:55:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/01/17/redis_generate/">redis的安装与部署</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node-js学习/">node.js学习</a></li></ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+    <a href="/2017/02/13/leetcode_2_SudokuSolver/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Sudoku Solver
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2017/02/08/bitoperation/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">位运算回顾</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
+</nav>
 
-    
+
+
+
+
+
+
 
 
           </div>
@@ -466,8 +307,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
