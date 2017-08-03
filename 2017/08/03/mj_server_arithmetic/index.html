@@ -8,22 +8,16 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>麻将类胡牌算法 | Dantel的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="第一次做麻将服务端，记录下相关算法
-##胡牌算法
-LayCards1234567891011/* *理牌*/	public static int[] LayCards(List&amp;lt;Poker&amp;gt; cardList)	&amp;#123;		int nCardsLay[] = new int[MJ_LAYOUT_NUM];    	for (Poker p : cardList) &amp;#123;">
+  <meta name="description" content="第一次做麻将服务端，记录下相关算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="麻将类胡牌算法">
 <meta property="og:url" content="http://yoursite.com/2017/08/03/mj_server_arithmetic/index.html">
 <meta property="og:site_name" content="Dantel的博客">
-<meta property="og:description" content="第一次做麻将服务端，记录下相关算法
-##胡牌算法
-LayCards1234567891011/* *理牌*/	public static int[] LayCards(List&amp;lt;Poker&amp;gt; cardList)	&amp;#123;		int nCardsLay[] = new int[MJ_LAYOUT_NUM];    	for (Poker p : cardList) &amp;#123;">
-<meta property="og:updated_time" content="2017-08-03T09:42:25.342Z">
+<meta property="og:description" content="第一次做麻将服务端，记录下相关算法">
+<meta property="og:updated_time" content="2017-08-03T09:45:00.169Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="麻将类胡牌算法">
-<meta name="twitter:description" content="第一次做麻将服务端，记录下相关算法
-##胡牌算法
-LayCards1234567891011/* *理牌*/	public static int[] LayCards(List&amp;lt;Poker&amp;gt; cardList)	&amp;#123;		int nCardsLay[] = new int[MJ_LAYOUT_NUM];    	for (Poker p : cardList) &amp;#123;">
+<meta name="twitter:description" content="第一次做麻将服务端，记录下相关算法">
   
     <link rel="alternative" href="/atom.xml" title="Dantel的博客" type="application/atom+xml">
   
@@ -166,6 +160,7 @@ LayCards1234567891011/* *理牌*/	public static int[] LayCards(List&amp;lt;Poker
     <div class="article-entry" itemprop="articleBody">
       
         <p>第一次做麻将服务端，记录下相关算法</p>
+<a id="more"></a>
 <p>##胡牌算法</p>
 <h3 id="LayCards"><a href="#LayCards" class="headerlink" title="LayCards"></a>LayCards</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"> *理牌</div><div class="line">*/</div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] LayCards(List&lt;Poker&gt; cardList)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">int</span> nCardsLay[] = <span class="keyword">new</span> <span class="keyword">int</span>[MJ_LAYOUT_NUM];</div><div class="line">    	<span class="keyword">for</span> (Poker p : cardList) &#123;</div><div class="line">			nCardsLay[p.getCode()]++;</div><div class="line">		&#125;</div><div class="line">    	<span class="keyword">return</span> nCardsLay;</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"> *验证输入已经理好的牌型是否满足 3*N规则</div><div class="line">*/</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">fitThreePairsForLayCards</span><span class="params">(<span class="keyword">int</span> laycards[])</span></span></div><div class="line">	&#123;</div><div class="line">		<span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line">		<span class="keyword">for</span> (;i &lt; MJ_LAYOUT_NUM; i++) &#123;</div><div class="line">			<span class="keyword">if</span> (laycards[i]&gt;<span class="number">0</span>) &#123;</div><div class="line">				<span class="keyword">break</span>;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span>(i==MJ_LAYOUT_NUM) <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">		</div><div class="line">		<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;MJ_LAYOUT_NUM;i++)</div><div class="line">		&#123;</div><div class="line">			<span class="keyword">if</span> (laycards[i]==<span class="number">0</span>)</div><div class="line">				<span class="keyword">continue</span>;</div><div class="line">			<span class="keyword">else</span> <span class="keyword">if</span> (laycards[i]==<span class="number">3</span>) &#123;</div><div class="line">				laycards[i] =<span class="number">0</span>;</div><div class="line">				<span class="keyword">return</span> fitThreePairsForLayCards(laycards);</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">else</span> <span class="keyword">if</span> (i&lt;<span class="number">28</span>&amp;&amp;laycards[i]&gt;<span class="number">0</span>&amp;&amp;laycards[i+<span class="number">1</span>]&gt;<span class="number">0</span>&amp;&amp;laycards[i+<span class="number">2</span>]&gt;<span class="number">0</span>) &#123;</div><div class="line">				laycards[i]--;</div><div class="line">				laycards[i+<span class="number">1</span>]--;</div><div class="line">				laycards[i+<span class="number">2</span>]--;</div><div class="line">				<span class="keyword">return</span> fitThreePairsForLayCards(laycards);</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">else</span></div><div class="line">			&#123;</div><div class="line">				<span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
@@ -336,15 +331,15 @@ LayCards1234567891011/* *理牌*/	public static int[] LayCards(List&amp;lt;Poker
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)">数据结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)">杂谈</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">mahjongsever</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">数据结构</a>
+                <a href="javascript:void(0)">c++</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -352,7 +347,7 @@ LayCards1234567891011/* *理牌*/	public static int[] LayCards(List&amp;lt;Poker
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">c++</a>
+                <a href="javascript:void(0)">mahjongsever</a>
               </li>
              
               <li class="article-tag-list-item">
