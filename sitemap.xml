@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2017/08/03/mj_server_arithmetic/</loc>
+    
+    <lastmod>2017-08-03T09:42:25.342Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2016/12/13/pomelo-libpomelo/</loc>
     
     <lastmod>2017-02-13T02:27:22.225Z</lastmod>
@@ -65,14 +72,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/01/24/node_mysql/</loc>
+    <loc>http://yoursite.com/2017/01/24/DataStructure_BinaryTree/</loc>
     
     <lastmod>2017-01-24T07:11:45.656Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/01/24/DataStructure_BinaryTree/</loc>
+    <loc>http://yoursite.com/2017/01/24/node_mysql/</loc>
     
     <lastmod>2017-01-24T07:11:45.656Z</lastmod>
     

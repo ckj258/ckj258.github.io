@@ -4,6 +4,23 @@
 
     
   <url>
+    <loc>http://yoursite.com/2017/08/03/mj_server_arithmetic/</loc>
+    <lastmod>2017-08-03T09:42:25.342Z</lastmod>
+    <data>
+        <display>
+        <title>麻将类胡牌算法</title>
+        <pubTime>2017-08-03T09:32:55.858Z</pubTime>
+        
+        <tag>mahjongsever</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2016/12/13/pomelo-libpomelo/</loc>
     <lastmod>2017-02-13T02:27:22.225Z</lastmod>
     <data>
@@ -157,14 +174,14 @@
 
     
   <url>
-    <loc>http://yoursite.com/2017/01/24/node_mysql/</loc>
+    <loc>http://yoursite.com/2017/01/24/DataStructure_BinaryTree/</loc>
     <lastmod>2017-01-24T07:11:45.656Z</lastmod>
     <data>
         <display>
-        <title>node调用mysql</title>
+        <title>二叉树的实现（c++）</title>
         <pubTime>2017-01-24T07:11:45.656Z</pubTime>
         
-        <tag>node.js学习</tag>
+        <tag>数据结构</tag>
          
          
            
@@ -174,14 +191,14 @@
 
     
   <url>
-    <loc>http://yoursite.com/2017/01/24/DataStructure_BinaryTree/</loc>
+    <loc>http://yoursite.com/2017/01/24/node_mysql/</loc>
     <lastmod>2017-01-24T07:11:45.656Z</lastmod>
     <data>
         <display>
-        <title>二叉树的实现（c++）</title>
+        <title>node调用mysql</title>
         <pubTime>2017-01-24T07:11:45.656Z</pubTime>
         
-        <tag>数据结构</tag>
+        <tag>node.js学习</tag>
          
          
            
