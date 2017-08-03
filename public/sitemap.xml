@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2017/08/03/mj_server_arithmetic/</loc>
+    
+    <lastmod>2017-08-03T09:47:18.838Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2016/12/13/pomelo-libpomelo/</loc>
     
     <lastmod>2017-02-13T02:27:22.225Z</lastmod>
@@ -65,7 +72,7 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/01/24/node_mysql/</loc>
+    <loc>http://yoursite.com/2016/12/07/hello-world/</loc>
     
     <lastmod>2017-01-24T07:11:45.656Z</lastmod>
     
@@ -79,7 +86,7 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2016/12/07/hello-world/</loc>
+    <loc>http://yoursite.com/2017/01/24/node_mysql/</loc>
     
     <lastmod>2017-01-24T07:11:45.656Z</lastmod>
     
